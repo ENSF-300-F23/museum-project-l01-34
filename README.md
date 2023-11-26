@@ -1,7 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/oWm-EAsM)
 # Museum-Project
 Suyoung Jang	30179959	suyoung.jang@ucalgary.ca
+
 Miri Kim		30172825	miri.kim@ucalgary.ca 
+
 Martin Liu		30161516	martin.liu@ucalgary.ca
 
 ## Tasks
