@@ -8,8 +8,11 @@ Martin Liu		30161516	martin.liu@ucalgary.ca
 
 ## Tasks
 EERD: 
+
 Relational Model and Database Implementation: 
+
 Querys: 
+
 Python Application: 
 
 ## To Do list:
