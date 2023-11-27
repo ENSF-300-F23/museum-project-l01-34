@@ -1,0 +1,354 @@
+DROP DATABASE IF EXISTS ARTOBJECT;
+CREATE DATABASE ARTOBJECT; 
+USE ARTOBJECT;
+
+CREATE TABLE ARTIST
+	(Artist_name		VARCHAR(45)		not null,
+    Date_born			INTEGER,
+    Date_died			INTEGER,
+    Country_of_origin	VARCHAR(15),
+    Main_style			VARCHAR(20),
+    Epoch				VARCHAR(20),
+    Artist_Desc			VARCHAR(100),
+    CONSTRAINT ARTPK PRIMARY KEY (Artist_name));
+
+INSERT INTO ARTIST (Artist_name, Date_born, Date_died, Country_of_origin, Main_style, Epoch, Artist_desc)
+VALUES
+('R W', '1560', '1615', 'United Kingdom', 'Renaissance', 'Renaissance', 'Unknown'), 
+('Unknown 1', '1556', '1599', 'China', 'Renaissance', 'Renaissance', 'Unknown'), 
+('Robert Peake the Elder', '1551', '1619', 'United Kingdom', 'Realism', 'Renaissance', 'An English painter active during Queen Elizabeth I’s reign.'), 
+('Hans Holbein the Younger', '1497', '1543', 'Germany', 'Realism', 'Renaissance', 'A German-Swiss painter and printmaker.'), 
+('Pietro Torrigiano', '1472', '1528', 'Italy', 'Realism', 'Renaissance', 'An Italian sculptor who fled Florence after breaking Michelangelo\'s nose.'), 
+('Donatello', '1386', '1466', 'Italy', 'Early Renaissance', 'Renaissance', 'Italian sculptor of the early Renaissance.'), 
+('Andrea della Robbia', '1435', '1525', 'Italy', 'Romantic', 'Renaissance', 'An Italian artist.'), 
+('Giambologna', '1529', '1608', 'Italy', 'Neoclassicism', 'Renaissance', 'An Italian artist.'), 
+('Pablo Picasso', '1881', '1973', 'Spain', 'Modern', 'Cubism', 'A Spanish artist.'), 
+('Juan Fernández', '1629', '1657', 'Spain', 'Baroque', 'Cubism', 'A Spanish artist.'), 
+('Georges Braque', '1882', '1963', 'France', 'Fauvism', 'Cubism', 'A French artist.'), 
+('Isidore Leroy', null, null, 'France', 'Fauvism', 'Cubism', 'A wallpaper manufacturer.'), 
+('Louis Léopold Boilly', '1761', '1845', 'France', 'Realism', 'Baroque', 'A French painter and draftsman.'), 
+('Niderviller', null, null, 'France', 'Trompe L’oeil', 'Baroque', 'A French manufacturer of ceramics.'), 
+('Vili', '1818', '1892', 'Kongo', 'Contemporary', 'Realism', 'Unknown'), 
+('Simone Leigh', '1967', null, 'United States', 'Contemporary', 'Contemporary', 'An American artist from Chicago.'), 
+('David Drake', '1801', '1870', 'United States', 'Baroque', 'Baroque', 'An American potter.'), 
+('Vincent van Gogh', '1853', '1890', 'Netherlands', 'Post-Impressionism', 'Post-Impressionism', 'A Dutch post-impressionist artist.'), 
+('Giovanni Paolo Panini', '1691', '1765', 'Italy', 'Baroque', 'Baroque', 'An Italian painter and architect.'), 
+('Lucas van Gassel', '1490', '1568', 'Netherlands', 'Baroque', 'Baroque', 'A Dutch painter.'), 
+('Victor Janssens', '1701', '1769', 'Belgium', 'Baroque', 'Baroque', 'Unknown'), 
+('Anonymous 1', '1698', '1754', 'France', 'Baroque', 'Baroque', 'Unknown'), 
+('Arthur Maees', '1628', '1697', 'Belgium', 'Baroque', 'Baroque', 'A Belgian sculptor.'), 
+('Timothy Matthews', '1850', '1915', 'Britain', 'Baroque', 'Baroque', 'A British sculptor.'), 
+('Guillaume Coustou', '1677', '1746', 'France', 'Baroque', 'Baroque', 'A French Sculptor.'), 
+('Michelangelo', '1475', '1564', 'Italy', 'Renaissance', 'Renaissance', 'Italian sculptor and painter.'), 
+('Leonardo da Vinci', '1452', '1519', 'Italy', 'Renaissance', 'Renaissance', 'An Italian polymath.'), 
+('Jakob Blanck', '1640', '1713', 'France', 'Baroque', 'Baroque', 'A French goldsmith.'), 
+('Eugène Delacroix', '1798', '1863', 'France', 'Romanticism', 'Baroque', 'A French artist.'), 
+('Unknown 2', '986', '1029', 'Spain', 'Ancient', 'Ancient', 'Unknown');
+
+CREATE TABLE ART_OBJECT
+	(Id_no				VARCHAR(15)				not null,
+    Title				VARCHAR(100)			default 'Unknown',
+    Year_made			INTEGER, -- some values stored here are outside of domain for YEAR data type
+    Origin				VARCHAR(20),
+    Style				VARCHAR(20),
+    Epoch				VARCHAR(20),
+    Art_Desc			VARCHAR(100),
+    CONSTRAINT OBJPK PRIMARY KEY (Id_no));
+    
+INSERT INTO ART_OBJECT (Id_no, Title, Year_made, Origin, Style, Epoch, Art_Desc)
+VALUES
+('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Carefully crafted out of Indian mother-of-pearl and precious exotic shells.'),
+('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A fine blue-and-white bowl made of Chinese porcelain.'),
+('AO_0003', 'Henry Frederick, Prince of Wales, with Sir John Harington, in the Hunting Field', '1603', 'British', 'Realism', 'Renaissance', 'Depicts a royal hunt in which young Prince Henry sheaths his sword.'),
+('AO_0004', 'Portrait of a Man in Royal Livery', '1532', 'German', 'Realism', 'Renaissance', 'A man wearing royal livery.'),
+('AO_0005', 'Portrait Bust of John Fisher, Bishop of Rochester', '1515', 'Italian', 'Realism', 'Renaissance', 'Bust of John Fisher, Bishop of Rochester.'),
+('AO_0006', 'Sprite', '1432', 'Italian', 'Early Renaissance', 'Renaissance', 'A sculpture made for a fountain.'),
+('AO_0007', 'Virgin and Child', '1475', 'Italian', 'Romantic', 'Renaissance', 'A statue made in the style similar to Andrea’s uncle.'),
+('AO_0008', 'Triton', '1594', 'Italian', 'Neoclassicism', 'Renaissance', 'A statue of a sea deity.'),
+('AO_0009', 'The Absinthe Glass', '1914', 'Spanish', 'Modern', 'Cubism', 'Life-sized rendering of a glass of alcohol.'),
+('AO_0010', 'Glass and Die', '1914', 'Spanish', 'Modern', 'Cubism', 'A deliberately rough-hewn composition.'),
+('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A specialized bunch of grapes hanging in a dark chamber'),
+('AO_0012', 'Still Life with Violin', '1912', 'French', 'Fauvism', 'Cubism', 'Strips of imitation wood-grain wallpaper on a drawing.'), 
+('AO_0013', 'Wallpaper: pattern 14020 F', '1902', 'French', 'Fauvism', 'Cubism', 'A blue and yellow flower-patterned wallpaper.'),
+('AO_0014', 'The Scallop Shell: "Notre Avenir est dans lAir', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso’s response to French Futurists.'),
+('AO_0015', 'Trompe l’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.'),
+('AO_0016', 'Still Life', '1914', 'Spanish', 'Modern', 'Cubism', 'Includes playful allusions to trompe l’oeil painters.'),
+('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L’oeil', 'Baroque', 'A print attached to a wood plate.'),
+('AO_0018', 'Power figure', '1850', 'Kongo', 'Contemporary', 'Realism', 'A roughened iron statue.'),
+('AO_0019', '108 (Face Jug Series)', '2019', 'American', 'Contemporary', 'Contemporary', 'A porcelain jug of a face.'),
+('AO_0020', 'Storage jar', '1834', 'American', 'Baroque', 'Baroque', 'A simple, green stoneware pot.'),
+('AO_0021', 'Garden at Arles', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A colourful painting of a flower garden.'),
+('AO_0022', 'Orchard Bordered by Cypresses', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A painting of a cloudy day in an orchard.'),
+('AO_0023', 'Vue du Forum à Rome', '1740', 'Italian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.'),
+('AO_0024', 'Vue d\'une ville fortifiée avec un port', '1520', 'Dutch', 'Baroque', 'Baroque', 'Artwork recovered after World War II.'),
+('AO_0025', 'Zéphyr porte les sœurs de Psyché au palais de l\'Amour, de la tenture de l\'Histoire de Psyché', '1725', 'Belgian', 'Baroque', 'Baroque', 'A tapestry depicting Psyche and her three attendants.'),
+('AO_0026', 'Vitrail : trois panneaux', '1730', 'French', 'Baroque', 'Baroque', 'Black and white stained glass.'),
+('AO_0027', 'Statuette : la Vierge à l\'Enfant', '1671', 'Belgian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.'),
+('AO_0028', 'Pied de meuble d\'un groupe de trois', '1893', 'British', 'Baroque', 'Baroque', 'Artwork recovered after World War II.'),
+('AO_0029', 'Cheval retenu par un palefrenier', '1745', 'French', 'Baroque', 'Baroque', 'A horse and a man.'),
+('AO_0030', 'Esclave rebelle', '1515', 'Italian', 'Renaissance', 'Renaissance', 'A statue of a rebel slave.'),
+('AO_0031', 'Mona Lisa', '1503', 'Italian', 'Renaissance', 'Renaissance', 'A portrait painting.'),
+('AO_0032', 'Coffre des pierreries de Louis XIV', '1677', 'French', 'Baroque', 'Baroque', 'A gold chest of jewels.'),
+('AO_0033', 'Liberty Leading the People', '1830', 'French', 'Romanticism', 'Baroque', 'A painting commemorating the French Revolution of 1830.'),
+('AO_0034', 'The Monzon Lion', '1100', 'Spanish', 'Ancient', 'Ancient', 'A sculpture of a lion.');
+
+CREATE TABLE CREATES
+	(Id_no				VARCHAR(15)				not null,
+    Artist_name			VARCHAR(45)				not null,
+    PRIMARY KEY (Id_no, Artist_name),
+    CONSTRAINT CRESUPERFKId FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE,
+	CONSTRAINT CRESUPERFKArt FOREIGN KEY (Artist_name) REFERENCES ARTIST(Artist_name)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO CREATES (Id_no, Artist_name)
+VALUES
+('AO_0001', 'R W'),
+('AO_0002', 'Unknown 1'),
+('AO_0003', 'Robert Peake the Elder'),
+('AO_0004', 'Hans Holbein the Younger'),
+('AO_0005', 'Pietro Torrigiano'),
+('AO_0006', 'Donatello'),
+('AO_0007', 'Andrea della Robbia'),
+('AO_0008', 'Giambologna'),
+('AO_0009', 'Pablo Picasso'),
+('AO_0010', 'Pablo Picasso'),
+('AO_0011', 'Juan Fernández'),
+('AO_0012', 'Georges Braque'),
+('AO_0013', 'Isidore Leroy'),
+('AO_0014', 'Pablo Picasso'),
+('AO_0015', 'Louis Léopold Boilly'),
+('AO_0016', 'Pablo Picasso'),
+('AO_0017', 'Niderviller'),
+('AO_0018', 'Vili'),
+('AO_0019', 'Simone Leigh'),
+('AO_0020', 'David Drake'),
+('AO_0021', 'Vincent van Gogh'),
+('AO_0022', 'Vincent van Gogh'),
+('AO_0023', 'Giovanni Paolo Panini'),
+('AO_0024', 'Lucas van Gassel'),
+('AO_0025', 'Victor Janssens'),
+('AO_0026', 'Anonymous 1'),
+('AO_0027', 'Arthur Maees'),
+('AO_0028', 'Timothy Matthews'),
+('AO_0029', 'Guillaume Coustou'),
+('AO_0030', 'Michelangelo'),
+('AO_0031', 'Leonardo da Vinci'),
+('AO_0032', 'Jakob Blanck'),
+('AO_0033', 'Eugène Delacroix'),
+('AO_0034', 'Unknown 2');
+
+CREATE TABLE EXHIBITION
+	(Exhibit_name		VARCHAR(80)				not null,
+    Start_date			DATE					not null,
+    End_date			DATE					not null,
+    CONSTRAINT EXHPK PRIMARY KEY (Exhibit_name));
+
+INSERT INTO EXHIBITION(Exhibit_name, Start_date, End_date)
+VALUES
+('The Tudors: Art and Majesty in Renaissance England', '2022-10-10', '2023-01-08'), 
+('Cubism and the Trompe l\’Oeil Tradition', '2022-10-20', '2023-01-22'), 
+('Hear Me Now: The Black Potters of Old Edgefield, South Carolina', '2022-11-09', '2023-02-05'), 
+('Van Gogh\'s Cypresses', '2023-05-22', '2023-08-27'), 
+('The Rediscovery of The Baroque Period', '2022-08-01', '2022-11-01'), 
+('Masterpieces of the Louvre', '2023-02-27', '2023-05-23');
+
+CREATE TABLE DISPLAYED_IN
+	(Id_no				VARCHAR(15)				not null,
+    Exhibit_name		VARCHAR(80)				not null,
+    PRIMARY KEY (Id_no, Exhibit_name),
+    CONSTRAINT DISSUPERFKId FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE,
+    FOREIGN KEY (Exhibit_name) REFERENCES EXHIBITION(Exhibit_name)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO DISPLAYED_IN (Id_no, Exhibit_name)
+VALUES
+('AO_0001','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0002','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0003','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0004','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0005','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0006','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0007','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0008','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0009','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0010','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0011','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0012','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0013','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0014','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0015','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0016','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0017','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0018','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0019','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0020','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0021','Van Gogh\'s Cypresses'),
+('AO_0022','Van Gogh\'s Cypresses'),
+('AO_0023','The Rediscovery of The Baroque Period'),
+('AO_0024','The Rediscovery of The Baroque Period'),
+('AO_0025','The Rediscovery of The Baroque Period'),
+('AO_0026','The Rediscovery of The Baroque Period'),
+('AO_0027','The Rediscovery of The Baroque Period'),
+('AO_0028','The Rediscovery of The Baroque Period'),
+('AO_0029','Masterpieces of the Louvre'),
+('AO_0030','Masterpieces of the Louvre'),
+('AO_0031','Masterpieces of the Louvre'),
+('AO_0032','Masterpieces of the Louvre'),
+('AO_0033','Masterpieces of the Louvre'),
+('AO_0034','Masterpieces of the Louvre');
+
+CREATE TABLE PAINTING
+	(Id_no				VARCHAR(15)				not null,
+    Paint_type			VARCHAR(15),
+    Drawn_on			VARCHAR(15),
+    CONSTRAINT PAIPK PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO PAINTING (Id_no, Paint_type, Drawn_on)
+VALUES
+('AO_0003', 'Oil', 'Canvas'), 
+('AO_0004', 'Oil, gold', 'Parchment'), 
+('AO_0011', 'Oil', 'Canvas'), 
+('AO_0014', 'Oil, enamel', 'Canvas'), 
+('AO_0021', 'Oil', 'Canvas'), 
+('AO_0022', 'Oil', 'Canvas'), 
+('AO_0023', 'Oil', 'Canvas'), 
+('AO_0024', 'Oil', 'Wood'), 
+('AO_0031', 'Oil', 'Wood'), 
+('AO_0033', 'Oil', 'Canvas');
+
+CREATE TABLE STATUE
+	(Id_no				VARCHAR(15)				not null,
+    Material			VARCHAR(50),
+    Height				DECIMAL(10, 4), -- consider converting user input if in imperial??
+    Weight				DECIMAL(10, 4),
+    CONSTRAINT STAPK PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO STATUE (Id_no, Material, Height, Weight)
+VALUES
+('AO_0005', 'Polychrome terracotta', '61.6', '28.1'), 
+('AO_0006', 'High-copper alloy, fire-gilt, brown natural patina', '61.6', '13.6'), 
+('AO_0009', 'Painted bronze, perforated tin absinthe spoon', '22.5', '3.6'), 
+('AO_0010', 'Painted wood', '23.5', '2.4'), 
+('AO_0016', 'Painted wood, fabric upholstery fringe', '25.4', '3.0'), 
+('AO_0027', 'Bronze', '16.2', '6.9'), 
+('AO_0029', 'Carrara Marble', '340.0', '542.6');
+
+CREATE TABLE SCULPTURE
+	(Id_no				VARCHAR(15)				not null,
+    Material			VARCHAR(50),
+    Height				DECIMAL(10, 4),
+    Weight				DECIMAL(10, 4),
+    CONSTRAINT SCUPK PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO SCULPTURE (Id_no, Material, Height, Weight)
+VALUES
+('AO_0007','Marble','94.9','32.8'),
+('AO_0008','Limestone','91.4','24.4'),
+('AO_0015','Bronze','74.3','23.7'),
+('AO_0018','Wood, Iron, Fibre','103.5','18.1'),
+('AO_0028','Hardstone','25.7','11.4'),
+('AO_0030','Marble','215.0','194.5'),
+('AO_0034','Metal','54.5','10.83');
+
+CREATE TABLE OTHER
+	(Id_no				VARCHAR(15)				not null,
+    Art_type			VARCHAR(15)				not null,
+    CONSTRAINT OTHPK PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO OTHER (Id_no, Art_type)
+VALUES
+('AO_0001','Metalwork'),
+('AO_0002','Metalwork'),
+('AO_0012','Collage'),
+('AO_0013','Wallpaper'),
+('AO_0017','Ceramics'),
+('AO_0019','Ceramics'),
+('AO_0020','Stoneware'),
+('AO_0025','Tapestry'),
+('AO_0026','Stained glass'),
+('AO_0032','Gold chest');
+
+CREATE TABLE COLLECTION
+	(Coll_name			VARCHAR(30)				not null,
+    Coll_type			VARCHAR(15)				not null,
+    Phone				VARCHAR(15)				not null,
+    Contact_person		VARCHAR(20),
+    Epoch				VARCHAR(20),
+    Coll_desc			VARCHAR(100),
+    CONSTRAINT COLPK PRIMARY KEY (Coll_name));
+
+INSERT INTO COLLECTION (Coll_name, Coll_type, Phone, Contact_person, Epoch, Coll_desc)
+VALUES
+('National Museums Recovery','Museum','33-010-111-1111','Leslie Davis','Multiple','Art pieces from the Baroque period.'),
+('Masterpieces of the Louvre','Museum','33-010-111-1111','Leslie Davis','Multiple','Essential artworks to the Louvre.');
+
+CREATE TABLE PERMANENT_COLLECTION
+	(Id_no				VARCHAR(15)				not null,
+    Date_acquired		DATE					not null,
+    Pcoll_status		VARCHAR(10)				not null 		Default 'Stored',
+    Cost				DECIMAL(19, 4),
+    CONSTRAINT PERPK PRIMARY KEY (Id_no),
+    FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+
+INSERT INTO PERMANENT_COLLECTION (Id_no, Date_acquired, Pcoll_status, Cost)
+VALUES
+('AO_0001','1977-09-29','On loan','116085.89'),
+('AO_0002','1914-02-17','On display','140293.52'),
+('AO_0003','1952-10-07','Stored','223122.34'),
+('AO_0004','2022-10-10','On display','213432.32'),
+('AO_0005','2022-10-10','On display','163043.33'),
+('AO_0006','2008-10-24','On display','180025.67'),
+('AO_0007','1957-01-30','Stored','153438.66'),
+('AO_0008','1913-08-12','On loan','120387.56'),
+('AO_0009','1997-08-26','On loan','245346.55'),
+('AO_0010','2022-10-17','Stored','214395.89'),
+('AO_0011','2022-10-17','On display','192347.58'),
+('AO_0012','2022-10-17','On display','130029.71'),
+('AO_0013','2021-06-12','On display','100348.54'),
+('AO_0014','1980-09-16','On loan','230455.65'),
+('AO_0015','2022-10-17','On loan','244396.45'),
+('AO_0016','2022-10-17','On display','136454.46'),
+('AO_0017','2022-10-17','On display','80564.58'),
+('AO_0018','2011-07-20','On loan','60453.70'),
+('AO_0019','2020-04-11','On display','50342.88'),
+('AO_0020','2002-03-15','On display','61430.39'),
+('AO_0021','2023-05-22','On display','730324.34'),
+('AO_0022','2023-05-22','On display','757933.86');
+
+CREATE TABLE BORROWED
+	(Id_no				VARCHAR(15)				not null,
+	Coll_name			VARCHAR(30)				not null,
+    Date_borrowed		DATE					not null,
+    Date_returned		DATE,
+    PRIMARY KEY (Id_no),
+    CONSTRAINT BORSUPERFKId FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE,
+    CONSTRAINT BORSUPERFKCol FOREIGN KEY (Coll_name) REFERENCES COLLECTION(Coll_name)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+    
+INSERT INTO BORROWED (Id_no, Coll_name, Date_borrowed, Date_returned)
+VALUES
+('AO_0023','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0024','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0025','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0026','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0027','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0028','National Museums Recovery','2023-06-10','2023-10-05'),
+('AO_0029','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
+('AO_0030','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
+('AO_0031','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
+('AO_0032','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
+('AO_0033','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
+('AO_0034','Masterpieces of the Louvre','2023-02-20','2023-05-30');
+
