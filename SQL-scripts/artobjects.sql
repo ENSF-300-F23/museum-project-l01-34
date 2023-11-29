@@ -3,21 +3,21 @@ CREATE DATABASE ARTOBJECT;
 USE ARTOBJECT;
 
 CREATE TABLE ARTIST
-	(Artist_name		VARCHAR(45)		not null,
+	(Artist_name		VARCHAR(40)		not null,
     Date_born			INTEGER			default null,
     Date_died			INTEGER			default null,
-    Country_of_origin	VARCHAR(15),
+    Country_of_origin	VARCHAR(20),
     Main_style			VARCHAR(20),
     Epoch				VARCHAR(20),
-    Artist_Desc			VARCHAR(100),
+    Artist_Desc			VARCHAR(60),
     CONSTRAINT ARTPK PRIMARY KEY (Artist_name));
 
 INSERT INTO ARTIST (Artist_name, Date_born, Date_died, Country_of_origin, Main_style, Epoch, Artist_desc)
 VALUES
 ('R W', '1560', '1615', 'United Kingdom', 'Renaissance', 'Renaissance', 'Unknown'), 
-('Robert Peake the Elder', '1551', '1619', 'United Kingdom', 'Realism', 'Renaissance', 'An English painter active during Queen Elizabeth I’s reign.'), 
+('Robert Peake the Elder', '1551', '1619', 'United Kingdom', 'Realism', 'Renaissance', 'An English painter during Queen Elizabeth I’s reign.'), 
 ('Hans Holbein the Younger', '1497', '1543', 'Germany', 'Realism', 'Renaissance', 'A German-Swiss painter and printmaker.'), 
-('Pietro Torrigiano', '1472', '1528', 'Italy', 'Realism', 'Renaissance', 'An Italian sculptor who fled Florence after breaking Michelangelo\'s nose.'), 
+('Pietro Torrigiano', '1472', '1528', 'Italy', 'Realism', 'Renaissance', 'An Italian sculptor.'), 
 ('Donatello', '1386', '1466', 'Italy', 'Early Renaissance', 'Renaissance', 'Italian sculptor of the early Renaissance.'), 
 ('Andrea della Robbia', '1435', '1525', 'Italy', 'Romantic', 'Renaissance', 'An Italian artist.'), 
 ('Giambologna', '1529', '1608', 'Italy', 'Neoclassicism', 'Renaissance', 'An Italian artist.'), 
@@ -58,15 +58,15 @@ VALUES
 ('Masterpieces of the Louvre', '2023-02-27', '2023-05-23');
 
 CREATE TABLE ART_OBJECT
-	(Id_no				VARCHAR(15)				not null,
-    Title				VARCHAR(100)			default 'Unknown',
+	(Id_no				VARCHAR(7)				not null,
+    Title				VARCHAR(60)			default 'Unknown',
     Year_made			INTEGER, -- some values stored here are outside of domain for YEAR data type
     Origin				VARCHAR(20),
     Style				VARCHAR(20),
     Epoch				VARCHAR(20),
-    Art_Desc			VARCHAR(100),
+    Art_Desc			VARCHAR(60),
 	Exhibit_name		VARCHAR(80)				default null,
-	Artist_name			VARCHAR(45)				default null,
+	Artist_name			VARCHAR(40)				default null,
     CONSTRAINT OBJPK PRIMARY KEY (Id_no),
 	CONSTRAINT OBJFK1 FOREIGN KEY (Exhibit_name) REFERENCES EXHIBITION(Exhibit_name)
 		ON DELETE SET NULL			ON UPDATE CASCADE,
@@ -76,9 +76,9 @@ CREATE TABLE ART_OBJECT
     
 INSERT INTO ART_OBJECT
 VALUES
-('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Carefully crafted out of Indian mother-of-pearl and precious exotic shells.','The Tudors: Art and Majesty in Renaissance England','R W'),
-('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A fine blue-and-white bowl made of Chinese porcelain.','The Tudors: Art and Majesty in Renaissance England', DEFAULT),
-('AO_0003', 'Henry Frederick, Prince of Wales, with Sir John Harington, in the Hunting Field', '1603', 'British', 'Realism', 'Renaissance', 'Depicts a royal hunt in which young Prince Henry sheaths his sword.','The Tudors: Art and Majesty in Renaissance England','Robert Peake the Elder'),
+('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Crafted out of mother-of-pearl and exotic shells.','The Tudors: Art and Majesty in Renaissance England','R W'),
+('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A blue-and-white bowl made of Chinese porcelain.','The Tudors: Art and Majesty in Renaissance England', DEFAULT),
+('AO_0003', 'Henry Frederick With Sir John Harington', '1603', 'British', 'Realism', 'Renaissance', 'Depicts a royal hunt with young Prince Henry.','The Tudors: Art and Majesty in Renaissance England','Robert Peake the Elder'),
 ('AO_0004', 'Portrait of a Man in Royal Livery', '1532', 'German', 'Realism', 'Renaissance', 'A man wearing royal livery.','The Tudors: Art and Majesty in Renaissance England','Hans Holbein the Younger'),
 ('AO_0005', 'Portrait Bust of John Fisher, Bishop of Rochester', '1515', 'Italian', 'Realism', 'Renaissance', 'Bust of John Fisher, Bishop of Rochester.','The Tudors: Art and Majesty in Renaissance England','Pietro Torrigiano'),
 ('AO_0006', 'Sprite', '1432', 'Italian', 'Early Renaissance', 'Renaissance', 'A sculpture made for a fountain.','The Tudors: Art and Majesty in Renaissance England','Donatello'),
@@ -86,10 +86,10 @@ VALUES
 ('AO_0008', 'Triton', '1594', 'Italian', 'Neoclassicism', 'Renaissance', 'A statue of a sea deity.','The Tudors: Art and Majesty in Renaissance England','Giambologna'),
 ('AO_0009', 'The Absinthe Glass', '1914', 'Spanish', 'Modern', 'Cubism', 'Life-sized rendering of a glass of alcohol.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
 ('AO_0010', 'Glass and Die', '1914', 'Spanish', 'Modern', 'Cubism', 'A deliberately rough-hewn composition.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A specialized bunch of grapes hanging in a dark chamber','Cubism and the Trompe l\’Oeil Tradition','Juan Fernández'),
+('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A bunch of grapes hanging in a dark chamber','Cubism and the Trompe l\’Oeil Tradition','Juan Fernández'),
 ('AO_0012', 'Still Life with Violin', '1912', 'French', 'Fauvism', 'Cubism', 'Strips of imitation wood-grain wallpaper on a drawing.','Cubism and the Trompe l\’Oeil Tradition','Georges Braque'), 
 ('AO_0013', 'Wallpaper: pattern 14020 F', '1902', 'French', 'Fauvism', 'Cubism', 'A blue and yellow flower-patterned wallpaper.','Cubism and the Trompe l\’Oeil Tradition','Isidore Leroy'),
-('AO_0014', 'The Scallop Shell: "Notre Avenir est dans lAir', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso’s response to French Futurists.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
+('AO_0014', 'The Scallop Shell: Notre Avenir est dans l\'Air', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso’s response to French Futurists.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
 ('AO_0015', 'Trompe l’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.','Cubism and the Trompe l\’Oeil Tradition','Louis Léopold Boilly'),
 ('AO_0016', 'Still Life', '1914', 'Spanish', 'Modern', 'Cubism', 'Includes playful allusions to trompe l’oeil painters.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
 ('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L’oeil', 'Baroque', 'A print attached to a wood plate.','Cubism and the Trompe l\’Oeil Tradition','Niderviller'),
@@ -100,7 +100,7 @@ VALUES
 ('AO_0022', 'Orchard Bordered by Cypresses', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A painting of a cloudy day in an orchard.','Van Gogh\'s Cypresses','Vincent van Gogh'),
 ('AO_0023', 'Vue du Forum à Rome', '1740', 'Italian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Giovanni Paolo Panini'),
 ('AO_0024', 'Vue d\'une ville fortifiée avec un port', '1520', 'Dutch', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Lucas van Gassel'),
-('AO_0025', 'Zéphyr porte les sœurs de Psyché au palais de l\'Amour, de la tenture de l\'Histoire de Psyché', '1725', 'Belgian', 'Baroque', 'Baroque', 'A tapestry depicting Psyche and her three attendants.','The Rediscovery of The Baroque Period','Victor Janssens'),
+('AO_0025', 'Zéphyr porte les sœurs de Psyché au palais de l\'Amour', '1725', 'Belgian', 'Baroque', 'Baroque', 'A tapestry depicting Psyche and her three attendants.','The Rediscovery of The Baroque Period','Victor Janssens'),
 ('AO_0026', 'Vitrail : trois panneaux', '1730', 'French', 'Baroque', 'Baroque', 'Black and white stained glass.','The Rediscovery of The Baroque Period', DEFAULT),
 ('AO_0027', 'Statuette : la Vierge à l\'Enfant', '1671', 'Belgian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Arthur Maees'),
 ('AO_0028', 'Pied de meuble d\'un groupe de trois', '1893', 'British', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Timothy Matthews'),
