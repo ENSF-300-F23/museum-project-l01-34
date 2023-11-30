@@ -1,7 +1,7 @@
 import mysql.connector
 cnx = mysql.connector.connect(
                             user ='root', 
-                            password ='PASSWORD HERE!',
+                            password ='PASSWORD HERE',
                             host ='127.0.0.1',
                             port = 3306)
 
@@ -53,11 +53,6 @@ def select_art(From):
     
     combined_columns = art_columns + other_columns
     return combined_columns
-
-def select_exhibit(From):
-    cur.execute("SELECT * FROM "+ From)
-    exhibit_columns = list(cur.column_names)
-    return exhibit_columns
     
 def submenu_art_object():
     print("\n1-Paintings\n2-Sculptures\n3-Other\n4-Permanent Collection\n5-Borrowed Items\n0-Return")
@@ -81,43 +76,49 @@ def submenu_art_object():
         execute_basic_query((','.join(column_names)), "art_object join borrowed on art_object.Id_no = borrowed.Id_no", column_names, "Borrowed Collection")
     submenu_art_object()
 
+def select_exhibit(From):
+    cur.execute("SELECT * FROM "+ From)
+    exhibit_columns = list(cur.column_names)
+    return exhibit_columns
+
+def create_exhibit_menu(exhibition_name):
+    menu_options = "\n1-Exhibition Archive"
+    for i in range(len(exhibition_name)):
+        menu_options += "\n"+str(i+2)+"-"+exhibition_name[i][0]
+    print(menu_options)
+    print("0-Return")
+    return
 
 def submenu_exhibition():
-    print("\n1-Exhibition Archive\n2-The Tudors: Art and Majesty in Renaissance England\n3-Cubism and the Trompe l’Oeil Tradition\n4-Hear Me Now: The Black Potters of Old Edgefield, South Carolina\n5-Van Gogh's Cypresses\n6-The Rediscovery of The Baroque Period\n7-Masterpieces of the Louvre\n0-Return")
-    Dir_index = int(input("\nPlease enter the number corresponding to the table of your choice: "))
+    cur.execute("SELECT Exhibit_name FROM Exhibition")
+    exhibition_name = cur.fetchall()
+    index_key = len(exhibition_name)
+    create_exhibit_menu(exhibition_name)
+    dir_index = int(input("\nPlease enter the number corresponding to the table of your choice: "))
     From = "art_object"
     column_names = select_exhibit(From)
     column_names.remove('Exhibit_name')
     column_names.pop(0)
-    if Dir_index == 0:
+    if dir_index == 0:
         return
-    if Dir_index == 1:
+    elif dir_index == 1:
         column_names = select_exhibit("exhibition")
         execute_basic_query("*", "Exhibition", column_names, "Exhibition Archive")
-    if Dir_index == 2:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"The Tudors: Art and Majesty in Renaissance England\"", column_names, "The Tudors: Art and Majesty in Renaissance England")
-    if Dir_index == 3:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"Cubism and the Trompe l\’Oeil Tradition\"", column_names, "Cubism and the Trompe l’Oeil Tradition")
-    if Dir_index == 4:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"Hear Me Now: The Black Potters of Old Edgefield, South Carolina\"", column_names, "Hear Me Now: The Black Potters of Old Edgefield, South Carolina")
-    if Dir_index == 5:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"Van Gogh\'s Cypresses\"", column_names, "Van Gogh's Cypresses")
-    if Dir_index == 6:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"The Rediscovery of The Baroque Period\"", column_names, "The Rediscovery of The Baroque Period")
-    if Dir_index == 7:
-        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \"Masterpieces of the Louvre\"", column_names, "Masterpieces of the Louvre")
+    elif dir_index-2 in range(index_key):
+        print(exhibition_name[dir_index-2][0])
+        execute_basic_query((','.join(column_names)), From + " WHERE art_object.Exhibit_name = \""+ exhibition_name[dir_index-2][0] +"\"", column_names, exhibition_name[dir_index-2][0])
     submenu_exhibition()
 
 print("\nWelcome to the Art_object database.")
 
 while True:
     print("\n1-Art Objects\n2-Exhibitions")
-    Dir_index = int(input("\nPlease enter the number corresponding to the table of your choice: "))
-    if Dir_index == 0:
+    dir_index = int(input("\nPlease enter the number corresponding to the table of your choice: "))
+    if dir_index == 0:
         break
-    elif Dir_index == 1:
+    elif dir_index == 1:
         submenu_art_object()
-    elif Dir_index == 2:
+    elif dir_index == 2:
         submenu_exhibition()
 
 cnx.close()
