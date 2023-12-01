@@ -1,0 +1,21 @@
+html{
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(45deg, #4B086D, #ACC0FE);
+}
+
+body {
+  margin: 0px;
+  font: 600 18px verdana;
+  letter-spacing: 0.64px;
+  color: #ffffff;
+}
+
+h1{
+    padding-left: 10px;
+    text-align: absolute;
+    position: relative;
+}
+
+
+

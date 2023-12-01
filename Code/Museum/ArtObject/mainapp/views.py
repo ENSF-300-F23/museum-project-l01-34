@@ -19,9 +19,24 @@ def Explore(request):
   }
   return HttpResponse(template.render(context, request))
 
+def ArtPieces(request):
+  sq = ''
+  if request.GET.get('searchQuery'):
+    sq = request.GET.get('searchQuery')
+  ArtObjects = ArtObject.objects.filter(Q(Title__icontains = sq))
+  template = loader.get_template('ArtPieces.html')
+  context = {
+    'ArtObjects' : ArtObjects,
+  }
+  return HttpResponse(template.render(context, request))
+  
+
 def ExhibitDetails(request, ExhibitName):
+  sq = ''
+  if request.GET.get('searchQuery'):
+    sq = request.GET.get('searchQuery')
   exhibit = Exhibition.objects.get(ExhibitName = ExhibitName)
-  artobjects = ArtObject.objects.filter(ExhibitName = ExhibitName)
+  artobjects = ArtObject.objects.filter(ExhibitName = ExhibitName, Title__icontains = sq)
   template = loader.get_template('ExhibitDetails.html')
   context = {
     'Exhibit' : exhibit,
