@@ -83,11 +83,11 @@ DATABASES = {
 
         'NAME': 'artobject',
 
-        'USER': 'root',
+        'USER': 'admin',
 
-        'PASSWORD': '803134001',
+        'PASSWORD': '12345678',
 
-        'HOST':'localhost',
+        'HOST':'museum.ccigeaogsxop.us-east-2.rds.amazonaws.com',
 
         'PORT':'3306',
 
