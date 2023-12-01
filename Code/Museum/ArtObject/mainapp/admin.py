@@ -2,6 +2,8 @@ from django.contrib.admin import AdminSite
 from django.contrib import admin
 from .models import *
 
+AdminSite.site_header = "Museum Administration"
+
 class ArtistDisplay(admin.ModelAdmin):
     list_display = ("ArtistName", "DateBorn", "DateDied", "CountryOfOrigin", "MainStyle", "Epoch", "ArtistDesc") 
 admin.site.register(Artist, ArtistDisplay)
