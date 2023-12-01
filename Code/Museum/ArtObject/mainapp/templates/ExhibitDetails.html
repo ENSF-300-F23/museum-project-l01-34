@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+
+{% block title %}
+{{ Exhibit.ExhibitName }}
+{% endblock %}
+
+{% block contents %}
+    <div class = "mycard">
+        <ul>
+        {% for x in ArtObjects %}
+        <li> {{ x.IdNo }} {{ x.Title }} </li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class = "topnav">
+    <p><a href = "/Explore"> Back </a></p>
+    </div>
+{% endblock %}
