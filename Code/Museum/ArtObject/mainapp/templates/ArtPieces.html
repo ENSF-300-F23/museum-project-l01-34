@@ -1,11 +1,23 @@
-{% extends 'master.html' %}
+{% load static %}
 
-{% block title %}
-{{ Exhibit.ExhibitName }}
-{% endblock %}
+<link rel = "stylesheet" href = "{% static 'ArtPieces.css' %}">
+<link rel = "stylesheet" href = "{% static 'Background.css' %}">
+    <body>
+        <div class="topnav">
+            {% include "MenuBar.html" %}
+        </div>
+    </body>
 
-{% block contents %}
-    <div class = "flex-container">
-        
-    </div>
-{% endblock %}
+<div class="flex-container">
+    {% for x in ArtObjects %}
+    <div> 
+        <img src="{% static x.Title|add:".jpg" %}" alt=""> 
+        <div>
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+        </div>
+    </div> 
+    {% endfor %}  
+</div>
+
+
+
