@@ -73,3 +73,29 @@ a:link, a:visited {
   text-align:center;
   color:#375BDC;
 }
+
+form{
+  display: flex;
+  margin-left: auto;
+}
+
+.SearchInput {
+  padding: 4px;
+  width: 50px;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.expanded{
+  width: 250px;
+}
+
+.SearchButton {
+  padding: 8px 15px;
+  background-color: transparent;
+  color: white;
+  margin-left: 10px;
+  cursor: pointer;
+}

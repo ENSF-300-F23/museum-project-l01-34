@@ -1,1 +1,25 @@
-<div> <a href = "/"> Home </a> | <a href = "/Explore"> Explore </a> </div>
+{% load static %}
+<meta charset = "UTF-8">
+<link rel = "stylesheet" href = "{% static 'master.css.css' %}">
+<div> 
+    <a href = "/"> Home </a> | <a href = "/Explore"> Explore </a> 
+    <input type = 'text' name = 'q' class = "SearchInput" placeholder = 'Search...' onclick = "expandSearch(this)"> 
+</div>
+<script>
+    function expandSearch(input) {
+        input.classList.add('expanded');
+        document.body.addEventListener('click', checkClickOutside);
+      }
+  
+      function shrinkSearch(input) {
+        input.classList.remove('expanded');
+        document.body.removeEventListener('click', checkClickOutside);
+      }
+  
+      function checkClickOutside(event) {
+        const searchInput = document.querySelector('.SearchInput');
+        if (!searchInput.contains(event.target)) {
+          shrinkSearch(searchInput);
+        }
+      }
+</script>
