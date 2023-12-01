@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
+from django.db.models import Q
 from .models import *
 
 def Home(request):
@@ -8,7 +9,10 @@ def Home(request):
   return HttpResponse(template.render(context, request))
 
 def Explore(request):
-  exibits = Exhibition.objects.all().values()
+  sq = ''
+  if request.GET.get('searchQuery'):
+    sq = request.GET.get('searchQuery')
+  exibits = Exhibition.objects.filter(Q(ExhibitName__icontains = sq))
   template = loader.get_template('Explore.html')
   context = {
     'Exhibits' : exibits,

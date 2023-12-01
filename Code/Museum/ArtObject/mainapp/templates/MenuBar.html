@@ -3,7 +3,10 @@
 <link rel = "stylesheet" href = "{% static 'master.css.css' %}">
 <div> 
     <a href = "/"> Home </a> | <a href = "/Explore"> Explore </a> 
-    <input type = 'text' name = 'q' class = "SearchInput" placeholder = 'Search...' onclick = "expandSearch(this)"> 
+    <form class = "form" action = "#" method = "get">
+    <input class = "SearchInput" id = "formInput#search" type = 'text' name = 'searchQuery' placeholder = 'Search...' onclick = "expandSearch(this)"> 
+    
+    </form>
 </div>
 <script>
     function expandSearch(input) {
