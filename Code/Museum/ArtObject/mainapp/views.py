@@ -29,7 +29,14 @@ def ArtPieces(request):
     'ArtObjects' : ArtObjects,
   }
   return HttpResponse(template.render(context, request))
-  
+
+def ArtPieceDetails(request, Title):
+   artPiece = ArtObject.objects.get(Title = Title)
+   template = loader.get_template('ArtPieceDetails.html')
+   context = {
+     'ArtPiece' : artPiece
+   }
+   return HttpResponse(template.render(context, request))
 
 def ExhibitDetails(request, ExhibitName):
   sq = ''

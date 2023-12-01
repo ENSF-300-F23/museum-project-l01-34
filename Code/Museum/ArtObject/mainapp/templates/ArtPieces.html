@@ -10,14 +10,12 @@
 
 <div class="flex-container">
     {% for x in ArtObjects %}
-    <div> 
-        <img src="{% static x.Title|add:".jpg" %}" alt=""> 
-        <div>
+    <a href="/ArtPieces/ArtPieceDetails/{{ x.Title }}"> 
+        <img src="{% static x.Title|add:".jpg" %}" alt="">
+        <div> 
             <h2 class = "wrap">{{ x.Title }}</h2> 
         </div>
-    </div> 
+    </a> 
     {% endfor %}  
 </div>
-
-
 
