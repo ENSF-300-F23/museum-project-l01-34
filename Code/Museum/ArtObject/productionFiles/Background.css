@@ -1,10 +1,13 @@
 html{
-    height: 100%;
+    position: relative;
+    min-height: 100%;
     margin: 0;
-    background: linear-gradient(45deg, #57606F, #D3D3D3);
+    background: #57606F;
 }
 
 body {
+  height: 100%;
+  width: 100%;
   margin: 0px;
   font: 600 18px verdana;
   letter-spacing: 0.64px;

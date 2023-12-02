@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block contents %}
-  <div class = "mycard">
+  <!-- <div class = "mycard"> -->
     <ul>
       {% for x in Exhibits %}
         <li> <a href = "/Explore/ExhibitDetails/{{ x.ExhibitName }}"> {{ x.ExhibitName }} </a> </li>
       {% endfor %}
     </ul>
-  </div>
+  <!-- </div> -->
 {% endblock %}

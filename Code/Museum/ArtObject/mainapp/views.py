@@ -4,8 +4,15 @@ from django.db.models import Q
 from .models import *
 
 def Home(request):
+  sq = ''
+  if request.GET.get('searchQuery'):
+    sq = request.GET.get('searchQuery')
+  ArtObjects = ArtObject.objects.filter(Q(Title__icontains = sq))
   template = loader.get_template('Home.html')
-  context = {'Home' : 'Home'}
+  context = {
+    'Home' : 'Home',
+    'ArtObjects' : ArtObjects
+  }
   return HttpResponse(template.render(context, request))
 
 def Explore(request):

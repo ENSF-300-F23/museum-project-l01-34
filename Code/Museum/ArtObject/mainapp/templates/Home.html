@@ -1,8 +1,33 @@
-{% extends "Master.html" %}
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'Home.css' %}">
+<link rel = "stylesheet" href = "{% static 'ArtPieces.css' %}">
+<link rel = "stylesheet" href = "{% static 'Background.css' %}">
 
-{% block title %}
-  Museum Project
-{% endblock %}
+<div class = 'flexContainer'>
+  <div class = 'container'>
+      <div class="topnav">
+        {% include 'MenuBar.html' %}
+      </div> 
+  </div>
+  
+  <form class="searchContainer" action = "#" method = "get">
+    <input 
+      class = "searchBar" 
+      id = "formInput#search" 
+      type = 'text' 
+      name = 'searchQuery' 
+      placeholder = 'Search Keywords'
+      > 
+  </form>
 
-{% block contents %}
-{% endblock  %}
+  <div class="flex-container">
+    {% for x in ArtObjects %}
+    <a href="/ArtPieces/ArtPieceDetails/{{ x.Title }}"> 
+        <img src="{% static x.Title|add:".jpg" %}" alt="">
+        <div> 
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+        </div>
+    </a> 
+    {% endfor %}  
+  </div>
+</div>

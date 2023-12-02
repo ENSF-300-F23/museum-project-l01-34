@@ -1,11 +1,10 @@
 {% load static %}
-<meta charset = "UTF-8">
+<head>
+    <meta charset = "UTF-8">
+</head>
 <link rel = "stylesheet" href = "{% static 'MenuBar.css' %}">
-<div> 
-    <a href = "/"> Home </a> | <a href = "/Explore"> Explore </a> | <a href = "/ArtPieces"> Art Pieces </a> 
-    <form class = "form" action = "#" method = "get">
-    <input class = "SearchInput" id = "formInput#search" type = 'text' name = 'searchQuery' placeholder = 'Search...' onclick = "expandSearch(this)"> 
-    </form>
+<div>
+    <a href = "/"> Home </a> | <a href = "/Explore"> Explore </a> | <a href = "/ArtPieces"> Art Pieces </a> | <a href = "/Adminlogin/"> Admin </a>
 </div>
 <script>
     function expandSearch(input) {

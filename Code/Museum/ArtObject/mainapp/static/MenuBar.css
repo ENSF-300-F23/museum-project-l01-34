@@ -2,6 +2,7 @@
     background-color: transparent;
     color:#ffffff;
     padding:10px;
+    align-self: right;
   }
   .topnav a:link, .topnav a:visited {
     text-decoration: none;
