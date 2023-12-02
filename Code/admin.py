@@ -1,12 +1,15 @@
 import mysql.connector
 cnx = mysql.connector.connect(
                             user ='root', 
-                            password ='password here',
+                            password ="PASSWORD HERE!",
                             host ='127.0.0.1',
                             port = 3306)
 
 cur = cnx.cursor(buffered=True)
 cur.execute('USE artobject')
+
+def get_command_or_check_select(string, delimiter, index):
+    return string.partition(delimiter)[index]
 
 def find_column_size(Attribute_name, From):
     cur.execute("SELECT max(length(" + Attribute_name + ")) FROM " + From)
@@ -40,7 +43,20 @@ def get_column_names(command):
     return list(cur.column_names)
 
 def sql_commands():
-    pass
+    command = input("\n0-Return\nEnter Command:\n")
+    select_checker = get_command_or_check_select(command, " ", 0)
+    if command == 0:
+        return
+    elif select_checker == 'SELECT':
+        From = get_command_or_check_select(command, "FROM ", 2)
+        column_names = get_column_names(command)
+        cur.execute(command)
+        get_columns(From, column_names, " ")
+        cur.execute(command)
+        get_table(From, column_names)
+    else:
+        cur.execute(command)
+    sql_commands()
 
 def open_sql_file():
     file_name = input("Enter file path and name: ")
