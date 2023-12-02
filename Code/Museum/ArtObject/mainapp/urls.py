@@ -11,6 +11,7 @@ urlpatterns = [
 
 htmx_urlpatterns = [
      path('search-art/', views.search_art, name = 'search-art'),
+     path('ArtPieces/search-art/', views.search_art, name = 'search-art'),
      path('Explore/search-exhibit/', views.search_exhibit, name = 'search-exhibit'),
 ]
 

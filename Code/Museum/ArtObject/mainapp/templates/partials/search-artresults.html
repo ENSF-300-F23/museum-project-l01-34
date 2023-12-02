@@ -1,10 +1,10 @@
 {% load static %}
 
 {% for x in ArtObjects %}
-<a href="/ArtPieces/ArtPieceDetails/{{ x.Title }}"> 
+<a href="/ArtPieces/ArtPieceDetails/{{ x.Title }}" > 
     <img src="{% static x.Title|add:".jpg" %}" alt="">
-    <div> 
+    <section> 
         <h2 class = "wrap">{{ x.Title }}</h2> 
-    </div>
+    </section>
 </a> 
 {% endfor %} 

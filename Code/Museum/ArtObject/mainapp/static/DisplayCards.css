@@ -6,11 +6,7 @@
     padding: 10px;
     margin: 0 10px;
   }
-  .displayCard h1 {
-    text-align: center;
-    color:#ffffff;
-    margin:20px 0 60px 0;
-  }
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -31,5 +27,5 @@
     transform: scale(1.1);
   }
   a:link, a:visited {
-    color: #ffffff; 
+    color: #000000; 
   }

@@ -56,6 +56,7 @@ def ExhibitDetails(request, ExhibitName):
   context = {
     'Exhibit' : exhibit,
     'ArtObjects' : artobjects,
+    'Name' : ExhibitName,
   }
 
   return HttpResponse(template.render(context, request))
