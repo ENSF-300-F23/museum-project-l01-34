@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.db.models import Q
 from .models import *
+from django.views.decorators.csrf import csrf_protect
 
 def Home(request):
   sq = ''
@@ -55,5 +56,17 @@ def ExhibitDetails(request, ExhibitName):
   context = {
     'Exhibit' : exhibit,
     'ArtObjects' : artobjects,
+  }
+
+  return HttpResponse(template.render(context, request))
+
+
+def search_art(request):
+  search_text = request.GET.get('search')
+  
+  results = ArtObject.objects.filter(Title__icontains = search_text)
+  template = loader.get_template('partials/search-results.html')
+  context = {
+    'ArtObjects' : results
   }
   return HttpResponse(template.render(context, request))

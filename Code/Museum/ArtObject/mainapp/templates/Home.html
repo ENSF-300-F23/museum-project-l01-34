@@ -2,7 +2,9 @@
 <link rel = "stylesheet" href = "{% static 'Home.css' %}">
 <link rel = "stylesheet" href = "{% static 'ArtPieces.css' %}">
 <link rel = "stylesheet" href = "{% static 'Background.css' %}">
-
+<head>
+  <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+</head>
 <div class = 'flexContainer'>
   <div class = 'container'>
       <div class="topnav">
@@ -10,24 +12,14 @@
       </div> 
   </div>
   
-  <form class="searchContainer" action = "#" method = "get">
-    <input 
-      class = "searchBar" 
-      id = "formInput#search" 
-      type = 'text' 
-      name = 'searchQuery' 
-      placeholder = 'Search Keywords'
-      > 
-  </form>
+  <form class="searchContainer">
+    {% csrf_token %}
 
-  <div class="flex-container">
-    {% for x in ArtObjects %}
-    <a href="/ArtPieces/ArtPieceDetails/{{ x.Title }}"> 
-        <img src="{% static x.Title|add:".jpg" %}" alt="">
-        <div> 
-            <h2 class = "wrap">{{ x.Title }}</h2> 
-        </div>
-    </a> 
-    {% endfor %}  
+    {% include 'partials/search.html' %}
+  </form>
+  
+  <div class="flex-container" id = "results">
+    {% include 'partials/search-results.html' %}
+
   </div>
 </div>
