@@ -1,16 +1,25 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<head>
     <link rel = "stylesheet" href = "{% static 'ArtPieces.css' %}">
+    <link rel = "stylesheet" href = "{% static 'Explore.css' %}">
+    <link rel = "stylesheet" href = "{% static 'MenuBar.css' %}">
     <link rel = "stylesheet" href = "{% static 'DisplayCards.css' %}">
     <link rel = "stylesheet" href = "{% static 'Background.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
+</head>
+
+<html> 
     <h1>{% block title %} {% endblock %}</h1>
-    <body>
-        <div class="topnav">
-            {% include "MenuBar.html" %}
-            {% include 'SearchBar.html' %}
+    <div class = "masterFlexContainer">
+        <div class = "masterContainer">
+            <div class="topnav"> {% block navBar %} {% endblock %}</div>
         </div>
-        {% block  contents %}
-        {% endblock  %}
-    </body>
+        <div class = "masterContainer">
+            {% block sb %} {% endblock %}
+        </div>
+        <div class = "masterContainer">
+            {% block contents %} {% endblock  %}
+        </div>
+    </div>
 </html>

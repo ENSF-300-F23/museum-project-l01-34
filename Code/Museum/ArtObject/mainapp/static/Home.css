@@ -18,10 +18,9 @@
 
 .searchContainer{
     display: flex;
-    justify-content: center; /* This centers the form horizontally */
-    align-items: center; /* This centers the form vertically */
-    width: 100%; /* Set the width to 100% */
-    margin-top: 20px; /* Adjust the top margin as needed */
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
   }
 
 .flexContainer{

@@ -65,8 +65,18 @@ def search_art(request):
   search_text = request.GET.get('search')
   
   results = ArtObject.objects.filter(Title__icontains = search_text)
-  template = loader.get_template('partials/search-results.html')
+  template = loader.get_template('partials/search-artresults.html')
   context = {
     'ArtObjects' : results
+  }
+  return HttpResponse(template.render(context, request))
+
+def search_exhibit(request):
+  search_text = request.GET.get('search')
+  
+  results = Exhibition.objects.filter(ExhibitName__icontains = search_text)
+  template = loader.get_template('partials/search-exhibitresults.html')
+  context = {
+    'Exhibits' : results
   }
   return HttpResponse(template.render(context, request))

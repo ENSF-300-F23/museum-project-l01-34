@@ -13,13 +13,14 @@
   </div>
   
   <form class="searchContainer">
+    {% with getLocation="search-art" %}
     {% csrf_token %}
-
     {% include 'partials/search.html' %}
+    {% endwith %}
   </form>
   
   <div class="flex-container" id = "results">
-    {% include 'partials/search-results.html' %}
+    {% include 'partials/search-artresults.html' %}
 
   </div>
 </div>
