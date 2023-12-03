@@ -38,8 +38,8 @@ def ArtPieces(request):
   }
   return HttpResponse(template.render(context, request))
 
-def ArtPieceDetails(request, Title):
-   artPiece = ArtObject.objects.get(Title = Title)
+def ArtPieceDetails(request, IdNo):
+   artPiece = ArtObject.objects.get(IdNo = IdNo)
    template = loader.get_template('ArtPieceDetails.html')
    context = {
      'ArtPiece' : artPiece
@@ -90,7 +90,6 @@ def search_art(request):
   
   others = Other.objects.filter(IdNo__in = objectIds).values_list('IdNo', flat = True)
   others = ArtObject.objects.filter(IdNo__in = others)
-  print(paintings.values_list('IdNo', flat=True))
   if(currentUrl == '/ArtPieces/search-art/'):
     template = loader.get_template('partials/search-multiartresults.html')
   else:

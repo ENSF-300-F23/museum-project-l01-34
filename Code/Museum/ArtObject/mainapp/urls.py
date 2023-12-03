@@ -6,7 +6,7 @@ urlpatterns = [
     path('Explore/', views.Explore, name = 'Explore'),
     path('Explore/ExhibitDetails/<path:ExhibitName>', views.ExhibitDetails, name = 'ExhibitName'),
     path('ArtPieces/', views.ArtPieces, name = 'ArtPieces'),
-    path('ArtPieces/ArtPieceDetails/<path:Title>', views.ArtPieceDetails, name = 'Title'),
+    path('ArtPieces/ArtPieceDetails/<path:IdNo>', views.ArtPieceDetails, name = 'IdNo'),
 ]
 
 htmx_urlpatterns = [

@@ -1,20 +1,15 @@
-{% load static %}
-    <link rel = "stylesheet" href = "{% static 'ArtPieces.css' %}">
-    <link rel = "stylesheet" href = "{% static 'Explore.css' %}">
-    <link rel = "stylesheet" href = "{% static 'MenuBar.css' %}">
-    <link rel = "stylesheet" href = "{% static 'Background.css' %}">
-    <link rel = "stylesheet" href = "{% static 'Home.css' %}">
-<head>
-  <script src="https://unpkg.com/htmx.org@1.9.9" integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX" crossorigin="anonymous"></script>
-</head>
-<h1> Museum Project </h1>
+{% extends 'master.html' %}
+
+{% block title %}
+  Museum Project
+{% endblock %}
+
+{% block navBar%}
+  {% include 'MenuBar.html' %}
+{% endblock %}
+
+{% block contents %}
 <div class = 'flexContainer'>
-  <div class = 'container'>
-      <div class="topnav">
-        {% include 'MenuBar.html' %}
-      </div> 
-  </div>
-  
   <form class="searchContainer">
     {% with getLocation="search-art" %}
     {% csrf_token %}
@@ -26,3 +21,4 @@
     {% include 'partials/search-artresults.html' %}
   </div>
 </div>
+{% endblock %}

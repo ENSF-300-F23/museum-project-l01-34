@@ -13,6 +13,7 @@
     font-size: 15px;
     border-radius: 5px;
     transition: transform 0.25s;
+    align-items: center;
   }
 
   .flex-container > div:hover{

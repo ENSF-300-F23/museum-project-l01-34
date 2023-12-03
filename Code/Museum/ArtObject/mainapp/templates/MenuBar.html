@@ -10,21 +10,3 @@
     <a href = "/Collections"> Collections </a> | 
     <a href = "/Adminlogin/"> Admin </a>
 </div>
-<script>
-    function expandSearch(input) {
-        input.classList.add('expanded');
-        document.body.addEventListener('click', checkClickOutside);
-    }
-  
-    function shrinkSearch(input) {
-        input.classList.remove('expanded');
-        document.body.removeEventListener('click', checkClickOutside);
-    }
-  
-    function checkClickOutside(event) {
-    const searchInput = document.querySelector('.SearchInput');
-        if (!searchInput.contains(event.target)) {
-          shrinkSearch(searchInput);
-        }
-    }
-</script>
