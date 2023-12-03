@@ -15,7 +15,7 @@ CREATE TABLE ARTIST
 INSERT INTO ARTIST (Artist_name, Date_born, Date_died, Country_of_origin, Main_style, Epoch, Artist_desc)
 VALUES
 ('R W', '1560', '1615', 'United Kingdom', 'Renaissance', 'Renaissance', 'Unknown'), 
-('Robert Peake the Elder', '1551', '1619', 'United Kingdom', 'Realism', 'Renaissance', 'An English painter during Queen Elizabeth I’s reign.'), 
+('Robert Peake the Elder', '1551', '1619', 'United Kingdom', 'Realism', 'Renaissance', 'An English painter during Queen Elizabeth I\’s reign.'), 
 ('Hans Holbein the Younger', '1497', '1543', 'Germany', 'Realism', 'Renaissance', 'A German-Swiss painter and printmaker.'), 
 ('Pietro Torrigiano', '1472', '1528', 'Italy', 'Realism', 'Renaissance', 'An Italian sculptor.'), 
 ('Donatello', '1386', '1466', 'Italy', 'Early Renaissance', 'Renaissance', 'Italian sculptor of the early Renaissance.'), 
@@ -26,7 +26,7 @@ VALUES
 ('Georges Braque', '1882', '1963', 'France', 'Fauvism', 'Cubism', 'A French artist.'), 
 ('Isidore Leroy', DEFAULT, DEFAULT, 'France', 'Fauvism', 'Cubism', 'A wallpaper manufacturer.'), 
 ('Louis Léopold Boilly', '1761', '1845', 'France', 'Realism', 'Baroque', 'A French painter and draftsman.'), 
-('Niderviller', DEFAULT, DEFAULT, 'France', 'Trompe L’oeil', 'Baroque', 'A French manufacturer of ceramics.'), 
+('Niderviller', DEFAULT, DEFAULT, 'France', 'Trompe L\’oeil', 'Baroque', 'A French manufacturer of ceramics.'), 
 ('Vili', '1818', '1892', 'Kongo', 'Contemporary', 'Realism', 'Unknown'), 
 ('Simone Leigh', '1967', DEFAULT, 'United States', 'Contemporary', 'Contemporary', 'An American artist from Chicago.'), 
 ('David Drake', '1801', '1870', 'United States', 'Baroque', 'Baroque', 'An American potter.'), 
@@ -59,7 +59,7 @@ VALUES
 
 CREATE TABLE ART_OBJECT
 	(Id_no				VARCHAR(7)				not null,
-    Title				VARCHAR(60)			default 'Unknown',
+    Title				VARCHAR(60)				default 'Unknown',
     Year_made			INTEGER, -- some values stored here are outside of domain for YEAR data type
     Origin				VARCHAR(20),
     Style				VARCHAR(20),
@@ -74,7 +74,7 @@ CREATE TABLE ART_OBJECT
 		ON DELETE SET NULL			ON UPDATE CASCADE
     );
     
-INSERT INTO ART_OBJECT
+INSERT INTO ART_OBJECT (Id_no, Title, Year_made, Origin, Style, Epoch, Art_Desc, Exhibit_name, Artist_name)
 VALUES
 ('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Crafted out of mother-of-pearl and exotic shells.','The Tudors: Art and Majesty in Renaissance England','R W'),
 ('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A blue-and-white bowl made of Chinese porcelain.','The Tudors: Art and Majesty in Renaissance England', DEFAULT),
@@ -82,17 +82,17 @@ VALUES
 ('AO_0004', 'Portrait of a Man in Royal Livery', '1532', 'German', 'Realism', 'Renaissance', 'A man wearing royal livery.','The Tudors: Art and Majesty in Renaissance England','Hans Holbein the Younger'),
 ('AO_0005', 'Portrait Bust of John Fisher, Bishop of Rochester', '1515', 'Italian', 'Realism', 'Renaissance', 'Bust of John Fisher, Bishop of Rochester.','The Tudors: Art and Majesty in Renaissance England','Pietro Torrigiano'),
 ('AO_0006', 'Sprite', '1432', 'Italian', 'Early Renaissance', 'Renaissance', 'A sculpture made for a fountain.','The Tudors: Art and Majesty in Renaissance England','Donatello'),
-('AO_0007', 'Virgin and Child', '1475', 'Italian', 'Romantic', 'Renaissance', 'A statue made in the style similar to Andrea’s uncle.','The Tudors: Art and Majesty in Renaissance England','Andrea della Robbia'),
+('AO_0007', 'Virgin and Child', '1475', 'Italian', 'Romantic', 'Renaissance', 'A statue made in the style similar to Andrea\’s uncle.','The Tudors: Art and Majesty in Renaissance England','Andrea della Robbia'),
 ('AO_0008', 'Triton', '1594', 'Italian', 'Neoclassicism', 'Renaissance', 'A statue of a sea deity.','The Tudors: Art and Majesty in Renaissance England','Giambologna'),
 ('AO_0009', 'The Absinthe Glass', '1914', 'Spanish', 'Modern', 'Cubism', 'Life-sized rendering of a glass of alcohol.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
 ('AO_0010', 'Glass and Die', '1914', 'Spanish', 'Modern', 'Cubism', 'A deliberately rough-hewn composition.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
 ('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A bunch of grapes hanging in a dark chamber','Cubism and the Trompe l\’Oeil Tradition','Juan Fernández'),
 ('AO_0012', 'Still Life with Violin', '1912', 'French', 'Fauvism', 'Cubism', 'Strips of imitation wood-grain wallpaper on a drawing.','Cubism and the Trompe l\’Oeil Tradition','Georges Braque'), 
 ('AO_0013', 'Wallpaper: pattern 14020 F', '1902', 'French', 'Fauvism', 'Cubism', 'A blue and yellow flower-patterned wallpaper.','Cubism and the Trompe l\’Oeil Tradition','Isidore Leroy'),
-('AO_0014', 'The Scallop Shell: Notre Avenir est dans l\'Air', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso’s response to French Futurists.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0015', 'Trompe l’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.','Cubism and the Trompe l\’Oeil Tradition','Louis Léopold Boilly'),
+('AO_0014', 'The Scallop Shell: Notre Avenir est dans l\'Air', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso\’s response to French Futurists.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
+('AO_0015', 'Trompe l\’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.','Cubism and the Trompe l\’Oeil Tradition','Louis Léopold Boilly'),
 ('AO_0016', 'Still Life', '1914', 'Spanish', 'Modern', 'Cubism', 'Includes playful allusions to trompe l’oeil painters.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L’oeil', 'Baroque', 'A print attached to a wood plate.','Cubism and the Trompe l\’Oeil Tradition','Niderviller'),
+('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L\’oeil', 'Baroque', 'A print attached to a wood plate.','Cubism and the Trompe l\’Oeil Tradition','Niderviller'),
 ('AO_0018', 'Power figure', '1850', 'Kongo', 'Contemporary', 'Realism', 'A roughened iron statue.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','Vili'),
 ('AO_0019', '108 (Face Jug Series)', '2019', 'American', 'Contemporary', 'Contemporary', 'A porcelain jug of a face.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','Simone Leigh'),
 ('AO_0020', 'Storage jar', '1834', 'American', 'Baroque', 'Baroque', 'A simple, green stoneware pot.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','David Drake'),
@@ -112,7 +112,7 @@ VALUES
 ('AO_0034', 'The Monzon Lion', '1100', 'Spanish', 'Ancient', 'Ancient', 'A sculpture of a lion.','Masterpieces of the Louvre', DEFAULT);
 
 CREATE TABLE PAINTING
-	(Id_no				VARCHAR(15)				not null,
+	(Id_no				VARCHAR(7)				not null,
     Paint_type			VARCHAR(15),
     Drawn_on			VARCHAR(15),
     CONSTRAINT PAIPK PRIMARY KEY (Id_no),
@@ -133,10 +133,10 @@ VALUES
 ('AO_0033', 'Oil', 'Canvas');
 
 CREATE TABLE SCULPTURE_OR_STATUE
-	(Id_no				VARCHAR(15)				not null,
+	(Id_no				VARCHAR(7)				not null,
     Material			VARCHAR(50),
-    Height				DECIMAL(10, 4),
-    Weight				DECIMAL(10, 4),
+    Height				DECIMAL(10, 2),
+    Weight				DECIMAL(10, 2),
     CONSTRAINT STAPK PRIMARY KEY (Id_no),
     CONSTRAINT SCUFK1 FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 		ON DELETE CASCADE			ON UPDATE CASCADE);
@@ -159,7 +159,7 @@ VALUES
 ('AO_0034','Metal','54.5','10.83');
 
 CREATE TABLE OTHER
-	(Id_no				VARCHAR(15)				not null,
+	(Id_no				VARCHAR(7)				not null,
     Art_type			VARCHAR(15)				not null,
     CONSTRAINT OTHPK PRIMARY KEY (Id_no),
     CONSTRAINT OTHFK1 FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
@@ -193,10 +193,10 @@ VALUES
 ('Masterpieces of the Louvre','Museum','33-010-111-1111','Leslie Davis','Multiple','Essential artworks to the Louvre.');
 
 CREATE TABLE PERMANENT_COLLECTION
-	(Id_no				VARCHAR(15)				not null,
+	(Id_no				VARCHAR(7)				not null,
     Date_acquired		DATE					not null,
     Pcoll_status		VARCHAR(10)				not null,
-    Cost				DECIMAL(19, 4),
+    Cost				DECIMAL(10, 2),
     CONSTRAINT PERPK PRIMARY KEY (Id_no),
     CONSTRAINT PERFK1 FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 		ON DELETE CASCADE			ON UPDATE CASCADE);
@@ -227,7 +227,7 @@ VALUES
 ('AO_0022','2023-05-22','On display','757933.86');
 
 CREATE TABLE BORROWED
-	(Id_no				VARCHAR(15)				not null,
+	(Id_no				VARCHAR(7)				not null,
 	Coll_name			VARCHAR(30)				not null,
     Date_borrowed		DATE					not null,
     Date_returned		DATE,
@@ -251,3 +251,4 @@ VALUES
 ('AO_0032','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
 ('AO_0033','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
 ('AO_0034','Masterpieces of the Louvre','2023-02-20','2023-05-30');
+
