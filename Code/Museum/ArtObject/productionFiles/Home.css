@@ -1,0 +1,33 @@
+.container {
+    height: auto;
+    min-width: 100%;
+    background-color: transparent;
+    align-items: center;
+}
+
+.searchBar {
+    padding: 4px;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    background-color: white;
+    border-color: white;
+    font-size: larger;
+    opacity: 50%;
+    width: 80%;
+}
+
+.searchContainer{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+  }
+
+.flexContainer{
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    height: auto;
+    align-items: center;
+    gap: 120px;
+}

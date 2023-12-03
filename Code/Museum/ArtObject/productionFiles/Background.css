@@ -20,5 +20,20 @@ h1{
     position: relative;
 }
 
+.masterFlexContainer{
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  height: auto;
+  align-items: center;
+  gap: 30px;
+}
+.masterContainer {
+  height: auto;
+  min-width: 100%;
+  background-color: transparent;
+  padding: 10px 10px;
+}
+
 
 

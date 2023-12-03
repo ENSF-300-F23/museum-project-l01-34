@@ -47,25 +47,40 @@ def ArtPieceDetails(request, Title):
    return HttpResponse(template.render(context, request))
 
 def ExhibitDetails(request, ExhibitName):
-  sq = ''
-  if request.GET.get('searchQuery'):
-    sq = request.GET.get('searchQuery')
   exhibit = Exhibition.objects.get(ExhibitName = ExhibitName)
-  artobjects = ArtObject.objects.filter(ExhibitName = ExhibitName, Title__icontains = sq)
+  artobjects = ArtObject.objects.filter(ExhibitName = ExhibitName)
   template = loader.get_template('ExhibitDetails.html')
   context = {
     'Exhibit' : exhibit,
     'ArtObjects' : artobjects,
-    'Name' : ExhibitName,
   }
 
   return HttpResponse(template.render(context, request))
 
 
 def search_art(request):
+  currentUrl = request.path
   search_text = request.GET.get('search')
   
-  results = ArtObject.objects.filter(Title__icontains = search_text)
+  if(currentUrl == '/search-art/'):
+    try:
+      searchYear = int(search_text)
+    except:
+      searchYear = -1
+    results = ArtObject.objects.filter(
+      Q(Title__icontains = search_text) |
+      Q(IdNo = search_text) |
+      Q(YearMade = searchYear) |
+      Q(Origin__iexact = search_text) |
+      Q(Style__iexact = search_text) |
+      Q(Epoch__iexact = search_text) |
+      Q(ArtDesc__icontains = search_text) |
+      Q(ExhibitName = search_text) |
+      Q(ArtistName = search_text) 
+      )
+  else:
+    results = ArtObject.objects.filter(Title__icontains = search_text)
+    
   template = loader.get_template('partials/search-artresults.html')
   context = {
     'ArtObjects' : results
@@ -75,7 +90,11 @@ def search_art(request):
 def search_exhibit(request):
   search_text = request.GET.get('search')
   
-  results = Exhibition.objects.filter(ExhibitName__icontains = search_text)
+  results = Exhibition.objects.filter(
+    Q(ExhibitName__icontains = search_text) |
+    Q(StartDate = search_text) |
+    Q(EndDate = search_text)
+    )
   template = loader.get_template('partials/search-exhibitresults.html')
   context = {
     'Exhibits' : results

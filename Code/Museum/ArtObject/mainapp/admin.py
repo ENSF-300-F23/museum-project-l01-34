@@ -20,6 +20,10 @@ class PaintingDisplay(admin.ModelAdmin):
     list_display = ("IdNo", "PaintType", "DrawnOn")
 admin.site.register(Painting, PaintingDisplay)
 
+class OtherDisplay(admin.ModelAdmin):
+    list_display = ("IdNo", "ArtType")
+admin.site.register(Other, OtherDisplay)
+
 class SculptureOrStatueDisplay(admin.ModelAdmin):
     list_display = ("IdNo", "Material", "Height", "Weight")
 admin.site.register(SculptureOrStatue,SculptureOrStatueDisplay)

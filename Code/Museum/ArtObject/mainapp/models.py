@@ -37,6 +37,10 @@ class SculptureOrStatue(models.Model):
     Height = models.DecimalField(max_digits = 10, decimal_places = 4, null = True)
     Weight = models.DecimalField(max_digits = 10, decimal_places = 4, null = True)
     
+class Other(models.Model):
+    IdNo = models.ForeignKey("ArtObject", primary_key = True, on_delete = models.CASCADE)
+    ArtType = models.CharField(max_length = 15, blank = True)
+    
 class Collection(models.Model):
     CollName = models.CharField(max_length = 30, primary_key = True)
     CollType = models.CharField(max_length = 15)
