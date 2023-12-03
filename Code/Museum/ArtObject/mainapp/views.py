@@ -1,8 +1,8 @@
+import datetime
 from django.http import HttpResponse
 from django.template import loader
 from django.db.models import Q
 from .models import *
-from django.views.decorators.csrf import csrf_protect
 
 def Home(request):
   sq = ''
@@ -18,8 +18,8 @@ def Home(request):
 
 def Explore(request):
   sq = ''
-  if request.GET.get('searchQuery'):
-    sq = request.GET.get('searchQuery')
+  if request.GET.get('search'):
+    sq = request.GET.get('search')
   exibits = Exhibition.objects.filter(Q(ExhibitName__icontains = sq))
   template = loader.get_template('Explore.html')
   context = {
@@ -29,8 +29,8 @@ def Explore(request):
 
 def ArtPieces(request):
   sq = ''
-  if request.GET.get('searchQuery'):
-    sq = request.GET.get('searchQuery')
+  if request.GET.get('search'):
+    sq = request.GET.get('search')
   ArtObjects = ArtObject.objects.filter(Q(Title__icontains = sq))
   template = loader.get_template('ArtPieces.html')
   context = {
@@ -57,12 +57,11 @@ def ExhibitDetails(request, ExhibitName):
 
   return HttpResponse(template.render(context, request))
 
-
 def search_art(request):
   currentUrl = request.path
   search_text = request.GET.get('search')
   
-  if(currentUrl == '/search-art/'):
+  if(currentUrl == '/search-art/' or '/ArtPieces/search-art/'):
     try:
       searchYear = int(search_text)
     except:
@@ -81,19 +80,41 @@ def search_art(request):
   else:
     results = ArtObject.objects.filter(Title__icontains = search_text)
     
-  template = loader.get_template('partials/search-artresults.html')
+  objectIds = results.values_list('IdNo', flat = True)
+  
+  paintings = Painting.objects.filter(IdNo__in = objectIds).values_list('IdNo', flat = True)
+  paintings = ArtObject.objects.filter(IdNo__in = paintings)
+  
+  sculpsOrStats = SculptureOrStatue.objects.filter(IdNo__in = objectIds).values_list('IdNo', flat = True)
+  sculpsOrStats = ArtObject.objects.filter(IdNo__in = sculpsOrStats)
+  
+  others = Other.objects.filter(IdNo__in = objectIds).values_list('IdNo', flat = True)
+  others = ArtObject.objects.filter(IdNo__in = others)
+  print(paintings.values_list('IdNo', flat=True))
+  if(currentUrl == '/ArtPieces/search-art/'):
+    template = loader.get_template('partials/search-multiartresults.html')
+  else:
+    template = loader.get_template('partials/search-artresults.html')
+
   context = {
-    'ArtObjects' : results
-  }
+    'ArtObjects' : results,
+    'Paintings' : paintings,
+    'SculpsOrStats' : sculpsOrStats,
+    'Others' : others
+    }
   return HttpResponse(template.render(context, request))
 
 def search_exhibit(request):
   search_text = request.GET.get('search')
-  
+  try:
+    search_date = datetime.datetime.strptime(search_text, '%Y-%m-%d').date()
+  except:
+    search_date = None
+     
   results = Exhibition.objects.filter(
     Q(ExhibitName__icontains = search_text) |
-    Q(StartDate = search_text) |
-    Q(EndDate = search_text)
+    Q(StartDate = search_date) |
+    Q(EndDate = search_date)
     )
   template = loader.get_template('partials/search-exhibitresults.html')
   context = {

@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 
 class Artist(models.Model):
@@ -7,7 +8,7 @@ class Artist(models.Model):
     CountryOfOrigin = models.CharField(max_length = 20, blank = True)
     MainStyle = models.CharField(max_length = 20, blank = True)
     Epoch = models.CharField(max_length = 20, blank = True)
-    ArtistDesc = models.CharField(max_length = 60, blank = True)
+    ArtistDesc = models.CharField(max_length = 60, blank = True) 
 
 class Exhibition(models.Model):
     ExhibitName = models.CharField(primary_key = True, max_length = 80)
@@ -25,6 +26,9 @@ class ArtObject(models.Model):
     
     ExhibitName = models.ForeignKey("Exhibition", on_delete = models.CASCADE, default = None, blank = True, null = True)  
     ArtistName = models.ForeignKey("Artist", on_delete = models.CASCADE, default = None, blank = True, null = True)
+    
+    def __str__(self):
+        return self.IdNo
     
 class Painting(models.Model):
     IdNo = models.ForeignKey("ArtObject", primary_key = True, on_delete = models.CASCADE)
