@@ -65,51 +65,94 @@ CREATE TABLE ART_OBJECT
     Style				VARCHAR(20),
     Epoch				VARCHAR(20),
     Art_Desc			VARCHAR(60),
-	Exhibit_name		VARCHAR(80)				default null,
 	Artist_name			VARCHAR(40)				default null,
     CONSTRAINT OBJPK PRIMARY KEY (Id_no),
-	CONSTRAINT OBJFK1 FOREIGN KEY (Exhibit_name) REFERENCES EXHIBITION(Exhibit_name)
-		ON DELETE SET NULL			ON UPDATE CASCADE,
 	CONSTRAINT OBJFK2 FOREIGN KEY (Artist_name) REFERENCES ARTIST(Artist_name)
 		ON DELETE SET NULL			ON UPDATE CASCADE
     );
     
-INSERT INTO ART_OBJECT (Id_no, Title, Year_made, Origin, Style, Epoch, Art_Desc, Exhibit_name, Artist_name)
+INSERT INTO ART_OBJECT (Id_no, Title, Year_made, Origin, Style, Epoch, Art_Desc, Artist_name)
 VALUES
-('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Crafted out of mother-of-pearl and exotic shells.','The Tudors: Art and Majesty in Renaissance England','R W'),
-('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A blue-and-white bowl made of Chinese porcelain.','The Tudors: Art and Majesty in Renaissance England', DEFAULT),
-('AO_0003', 'Henry Frederick With Sir John Harington', '1603', 'British', 'Realism', 'Renaissance', 'Depicts a royal hunt with young Prince Henry.','The Tudors: Art and Majesty in Renaissance England','Robert Peake the Elder'),
-('AO_0004', 'Portrait of a Man in Royal Livery', '1532', 'German', 'Realism', 'Renaissance', 'A man wearing royal livery.','The Tudors: Art and Majesty in Renaissance England','Hans Holbein the Younger'),
-('AO_0005', 'Portrait Bust of John Fisher, Bishop of Rochester', '1515', 'Italian', 'Realism', 'Renaissance', 'Bust of John Fisher, Bishop of Rochester.','The Tudors: Art and Majesty in Renaissance England','Pietro Torrigiano'),
-('AO_0006', 'Sprite', '1432', 'Italian', 'Early Renaissance', 'Renaissance', 'A sculpture made for a fountain.','The Tudors: Art and Majesty in Renaissance England','Donatello'),
-('AO_0007', 'Virgin and Child', '1475', 'Italian', 'Romantic', 'Renaissance', 'A statue made in the style similar to Andrea\’s uncle.','The Tudors: Art and Majesty in Renaissance England','Andrea della Robbia'),
-('AO_0008', 'Triton', '1594', 'Italian', 'Neoclassicism', 'Renaissance', 'A statue of a sea deity.','The Tudors: Art and Majesty in Renaissance England','Giambologna'),
-('AO_0009', 'The Absinthe Glass', '1914', 'Spanish', 'Modern', 'Cubism', 'Life-sized rendering of a glass of alcohol.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0010', 'Glass and Die', '1914', 'Spanish', 'Modern', 'Cubism', 'A deliberately rough-hewn composition.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A bunch of grapes hanging in a dark chamber','Cubism and the Trompe l\’Oeil Tradition','Juan Fernández'),
-('AO_0012', 'Still Life with Violin', '1912', 'French', 'Fauvism', 'Cubism', 'Strips of imitation wood-grain wallpaper on a drawing.','Cubism and the Trompe l\’Oeil Tradition','Georges Braque'), 
-('AO_0013', 'Wallpaper: pattern 14020 F', '1902', 'French', 'Fauvism', 'Cubism', 'A blue and yellow flower-patterned wallpaper.','Cubism and the Trompe l\’Oeil Tradition','Isidore Leroy'),
-('AO_0014', 'The Scallop Shell: Notre Avenir est dans l\'Air', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso\’s response to French Futurists.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0015', 'Trompe l\’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.','Cubism and the Trompe l\’Oeil Tradition','Louis Léopold Boilly'),
-('AO_0016', 'Still Life', '1914', 'Spanish', 'Modern', 'Cubism', 'Includes playful allusions to trompe l’oeil painters.','Cubism and the Trompe l\’Oeil Tradition','Pablo Picasso'),
-('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L\’oeil', 'Baroque', 'A print attached to a wood plate.','Cubism and the Trompe l\’Oeil Tradition','Niderviller'),
-('AO_0018', 'Power figure', '1850', 'Kongo', 'Contemporary', 'Realism', 'A roughened iron statue.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','Vili'),
-('AO_0019', '108 (Face Jug Series)', '2019', 'American', 'Contemporary', 'Contemporary', 'A porcelain jug of a face.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','Simone Leigh'),
-('AO_0020', 'Storage jar', '1834', 'American', 'Baroque', 'Baroque', 'A simple, green stoneware pot.','Hear Me Now: The Black Potters of Old Edgefield, South Carolina','David Drake'),
-('AO_0021', 'Garden at Arles', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A colourful painting of a flower garden.','Van Gogh\'s Cypresses','Vincent van Gogh'),
-('AO_0022', 'Orchard Bordered by Cypresses', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A painting of a cloudy day in an orchard.','Van Gogh\'s Cypresses','Vincent van Gogh'),
-('AO_0023', 'Vue du Forum à Rome', '1740', 'Italian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Giovanni Paolo Panini'),
-('AO_0024', 'Vue d\'une ville fortifiée avec un port', '1520', 'Dutch', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Lucas van Gassel'),
-('AO_0025', 'Zéphyr porte les sœurs de Psyché au palais de l\'Amour', '1725', 'Belgian', 'Baroque', 'Baroque', 'A tapestry depicting Psyche and her three attendants.','The Rediscovery of The Baroque Period','Victor Janssens'),
-('AO_0026', 'Vitrail : trois panneaux', '1730', 'French', 'Baroque', 'Baroque', 'Black and white stained glass.','The Rediscovery of The Baroque Period', DEFAULT),
-('AO_0027', 'Statuette : la Vierge à l\'Enfant', '1671', 'Belgian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Arthur Maees'),
-('AO_0028', 'Pied de meuble d\'un groupe de trois', '1893', 'British', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','The Rediscovery of The Baroque Period','Timothy Matthews'),
-('AO_0029', 'Cheval retenu par un palefrenier', '1745', 'French', 'Baroque', 'Baroque', 'A horse and a man.','Masterpieces of the Louvre','Guillaume Coustou'),
-('AO_0030', 'Esclave rebelle', '1515', 'Italian', 'Renaissance', 'Renaissance', 'A statue of a rebel slave.','Masterpieces of the Louvre','Michelangelo'),
-('AO_0031', 'Mona Lisa', '1503', 'Italian', 'Renaissance', 'Renaissance', 'A portrait painting.','Masterpieces of the Louvre','Leonardo da Vinci'),
-('AO_0032', 'Coffre des pierreries de Louis XIV', '1677', 'French', 'Baroque', 'Baroque', 'A gold chest of jewels.','Masterpieces of the Louvre','Jakob Blanck'),
-('AO_0033', 'Liberty Leading the People', '1830', 'French', 'Romanticism', 'Baroque', 'A painting commemorating the French Revolution of 1830.','Masterpieces of the Louvre','Eugène Delacroix'),
-('AO_0034', 'The Monzon Lion', '1100', 'Spanish', 'Ancient', 'Ancient', 'A sculpture of a lion.','Masterpieces of the Louvre', DEFAULT);
+('AO_0001', 'Cup with cover', '1590', 'British, London', 'Renaissance', 'Renaissance', 'Crafted out of mother-of-pearl and exotic shells.','R W'),
+('AO_0002', 'Two-handled bowl', '1585', 'Chinese', 'Renaissance', 'Renaissance', 'A blue-and-white bowl made of Chinese porcelain.', DEFAULT),
+('AO_0003', 'Henry Frederick With Sir John Harington', '1603', 'British', 'Realism', 'Renaissance', 'Depicts a royal hunt with young Prince Henry.','Robert Peake the Elder'),
+('AO_0004', 'Portrait of a Man in Royal Livery', '1532', 'German', 'Realism', 'Renaissance', 'A man wearing royal livery.','Hans Holbein the Younger'),
+('AO_0005', 'Portrait Bust of John Fisher, Bishop of Rochester', '1515', 'Italian', 'Realism', 'Renaissance', 'Bust of John Fisher, Bishop of Rochester.','Pietro Torrigiano'),
+('AO_0006', 'Sprite', '1432', 'Italian', 'Early Renaissance', 'Renaissance', 'A sculpture made for a fountain.','Donatello'),
+('AO_0007', 'Virgin and Child', '1475', 'Italian', 'Romantic', 'Renaissance', 'A statue made in the style similar to Andrea\’s uncle.','Andrea della Robbia'),
+('AO_0008', 'Triton', '1594', 'Italian', 'Neoclassicism', 'Renaissance', 'A statue of a sea deity.','Giambologna'),
+('AO_0009', 'The Absinthe Glass', '1914', 'Spanish', 'Modern', 'Cubism', 'Life-sized rendering of a glass of alcohol.','Pablo Picasso'),
+('AO_0010', 'Glass and Die', '1914', 'Spanish', 'Modern', 'Cubism', 'A deliberately rough-hewn composition.','Pablo Picasso'),
+('AO_0011','Still Life with Four Bunches of Grapes','1636', 'Spanish', 'Baroque', 'Cubism', 'A bunch of grapes hanging in a dark chamber','Juan Fernández'),
+('AO_0012', 'Still Life with Violin', '1912', 'French', 'Fauvism', 'Cubism', 'Strips of imitation wood-grain wallpaper on a drawing.','Georges Braque'), 
+('AO_0013', 'Wallpaper: pattern 14020 F', '1902', 'French', 'Fauvism', 'Cubism', 'A blue and yellow flower-patterned wallpaper.','Isidore Leroy'),
+('AO_0014', 'The Scallop Shell: Notre Avenir est dans l\'Air', '1912', 'Spanish', 'Modern', 'Cubism', 'Picasso\’s response to French Futurists.','Pablo Picasso'),
+('AO_0015', 'Trompe l\’Oeil', '1804', 'French', 'Realism','Baroque', 'A piece with visual deceptions that \'fool the eye\'.','Louis Léopold Boilly'),
+('AO_0016', 'Still Life', '1914', 'Spanish', 'Modern', 'Cubism', 'Includes playful allusions to trompe l’oeil painters.','Pablo Picasso'),
+('AO_0017', 'Dessert plate', '1774', 'French', 'Trompe L\’oeil', 'Baroque', 'A print attached to a wood plate.','Niderviller'),
+('AO_0018', 'Power figure', '1850', 'Kongo', 'Contemporary', 'Realism', 'A roughened iron statue.','Vili'),
+('AO_0019', '108 (Face Jug Series)', '2019', 'American', 'Contemporary', 'Contemporary', 'A porcelain jug of a face.','Simone Leigh'),
+('AO_0020', 'Storage jar', '1834', 'American', 'Baroque', 'Baroque', 'A simple, green stoneware pot.','David Drake'),
+('AO_0021', 'Garden at Arles', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism','A colourful painting of a flower garden.','Vincent van Gogh'),
+('AO_0022', 'Orchard Bordered by Cypresses', '1888', 'Dutch', 'Post-Impressionism', 'Post-Impressionism', 'A painting of a cloudy day in an orchard.','Vincent van Gogh'),
+('AO_0023', 'Vue du Forum à Rome', '1740', 'Italian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','Giovanni Paolo Panini'),
+('AO_0024', 'Vue d\'une ville fortifiée avec un port', '1520', 'Dutch', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','Lucas van Gassel'),
+('AO_0025', 'Zéphyr porte les sœurs de Psyché au palais de l\'Amour', '1725', 'Belgian', 'Baroque', 'Baroque', 'A tapestry depicting Psyche and her three attendants.','Victor Janssens'),
+('AO_0026', 'Vitrail : trois panneaux', '1730', 'French', 'Baroque', 'Baroque', 'Black and white stained glass.', DEFAULT),
+('AO_0027', 'Statuette : la Vierge à l\'Enfant', '1671', 'Belgian', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','Arthur Maees'),
+('AO_0028', 'Pied de meuble d\'un groupe de trois', '1893', 'British', 'Baroque', 'Baroque', 'Artwork recovered after World War II.','Timothy Matthews'),
+('AO_0029', 'Cheval retenu par un palefrenier', '1745', 'French', 'Baroque', 'Baroque', 'A horse and a man.','Guillaume Coustou'),
+('AO_0030', 'Esclave rebelle', '1515', 'Italian', 'Renaissance', 'Renaissance', 'A statue of a rebel slave.','Michelangelo'),
+('AO_0031', 'Mona Lisa', '1503', 'Italian', 'Renaissance', 'Renaissance', 'A portrait painting.','Leonardo da Vinci'),
+('AO_0032', 'Coffre des pierreries de Louis XIV', '1677', 'French', 'Baroque', 'Baroque', 'A gold chest of jewels.','Jakob Blanck'),
+('AO_0033', 'Liberty Leading the People', '1830', 'French', 'Romanticism', 'Baroque', 'A painting commemorating the French Revolution of 1830.','Eugène Delacroix'),
+('AO_0034', 'The Monzon Lion', '1100', 'Spanish', 'Ancient', 'Ancient', 'A sculpture of a lion.', DEFAULT);
+
+CREATE TABLE DISPLAYED_IN
+	(Id_no				VARCHAR(15)				not null,
+    Exhibit_name		VARCHAR(80)				not null,
+    PRIMARY KEY (Id_no, Exhibit_name),
+    CONSTRAINT DISFK1 FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
+		ON DELETE CASCADE			ON UPDATE CASCADE,
+    CONSTRAINT DISFK2 FOREIGN KEY (Exhibit_name) REFERENCES EXHIBITION(Exhibit_name)
+		ON DELETE CASCADE			ON UPDATE CASCADE);
+	
+INSERT INTO DISPLAYED_IN (Id_no, Exhibit_name)
+VALUES
+('AO_0001','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0002','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0003','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0004','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0005','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0006','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0007','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0008','The Tudors: Art and Majesty in Renaissance England'),
+('AO_0009','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0010','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0011','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0012','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0013','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0014','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0015','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0016','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0017','Cubism and the Trompe l\’Oeil Tradition'),
+('AO_0018','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0019','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0020','Hear Me Now: The Black Potters of Old Edgefield, South Carolina'),
+('AO_0021','Van Gogh\'s Cypresses'),
+('AO_0022','Van Gogh\'s Cypresses'),
+('AO_0023','The Rediscovery of The Baroque Period'),
+('AO_0024','The Rediscovery of The Baroque Period'),
+('AO_0025','The Rediscovery of The Baroque Period'),
+('AO_0026','The Rediscovery of The Baroque Period'),
+('AO_0027','The Rediscovery of The Baroque Period'),
+('AO_0028','The Rediscovery of The Baroque Period'),
+('AO_0029','Masterpieces of the Louvre'),
+('AO_0030','Masterpieces of the Louvre'),
+('AO_0031','Masterpieces of the Louvre'),
+('AO_0032','Masterpieces of the Louvre'),
+('AO_0033','Masterpieces of the Louvre'),
+('AO_0034','Masterpieces of the Louvre');
 
 CREATE TABLE PAINTING
 	(Id_no				VARCHAR(7)				not null,
@@ -137,7 +180,7 @@ CREATE TABLE SCULPTURE_OR_STATUE
     Material			VARCHAR(50),
     Height				DECIMAL(10, 2),
     Weight				DECIMAL(10, 2),
-    CONSTRAINT STAPK PRIMARY KEY (Id_no),
+    CONSTRAINT SCUPK PRIMARY KEY (Id_no),
     CONSTRAINT SCUFK1 FOREIGN KEY (Id_no) REFERENCES ART_OBJECT(Id_no)
 		ON DELETE CASCADE			ON UPDATE CASCADE);
 
@@ -254,25 +297,13 @@ VALUES
 
 -- custom triggers, also in query file for ease of reading
 
-DROP TRIGGER IF EXISTS DISPLAYED_EXHIBIT_UPDATE_VIOLATION;
-CREATE TRIGGER DISPLAYED_EXHIBIT_UPDATE_VIOLATION
-BEFORE UPDATE ON ART_OBJECT
+DROP TRIGGER IF EXISTS PCOLL_STATUS_VIOLATION;
+CREATE TRIGGER PCOLL_STATUS_VIOLATION
+BEFORE UPDATE ON PERMANENT_COLLECTION
 FOR EACH ROW
-	SET NEW.Exhibit_name = IF(	(((SELECT DISTINCT End_date
-										FROM	EXHIBITION
-                                        WHERE	NEW.Exhibit_name = Exhibit_name) > 
-                                        (SELECT	DISTINCT Start_date 
-                                        FROM	EXHIBITION
-										WHERE	OLD.Exhibit_name = Exhibit_name))
-                                        AND
-                                        ((SELECT	DISTINCT Start_date
-                                        FROM	EXHIBITION
-                                        WHERE	NEW.Exhibit_name = Exhibit_name) <
-                                        (SELECT	DISTINCT End_date 
-                                        FROM	EXHIBITION
-										WHERE	OLD.Exhibit_name = Exhibit_name))),
-								OLD.Exhibit_name,
-                                NEW.Exhibit_name);
+	SET NEW.Pcoll_status = IF (NEW.Pcoll_status IN ('Stored', 'On display', 'On loan'),
+								NEW.Pcoll_status,
+                                OLD.Pcoll_status);
 
 DROP TRIGGER IF EXISTS ARTIST_NOT_NEEDED;
 CREATE TRIGGER ARTIST_NOT_NEEDED
