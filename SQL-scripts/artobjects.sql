@@ -252,3 +252,35 @@ VALUES
 ('AO_0033','Masterpieces of the Louvre','2023-02-20','2023-05-30'),
 ('AO_0034','Masterpieces of the Louvre','2023-02-20','2023-05-30');
 
+-- custom triggers, also in query file for ease of reading
+
+DROP TRIGGER IF EXISTS DISPLAYED_EXHIBIT_UPDATE_VIOLATION;
+CREATE TRIGGER DISPLAYED_EXHIBIT_UPDATE_VIOLATION
+BEFORE UPDATE ON ART_OBJECT
+FOR EACH ROW
+	SET NEW.Exhibit_name = IF(	(((SELECT DISTINCT End_date
+										FROM	EXHIBITION
+                                        WHERE	NEW.Exhibit_name = Exhibit_name) > 
+                                        (SELECT	DISTINCT Start_date 
+                                        FROM	EXHIBITION
+										WHERE	OLD.Exhibit_name = Exhibit_name))
+                                        AND
+                                        ((SELECT	DISTINCT Start_date
+                                        FROM	EXHIBITION
+                                        WHERE	NEW.Exhibit_name = Exhibit_name) <
+                                        (SELECT	DISTINCT End_date 
+                                        FROM	EXHIBITION
+										WHERE	OLD.Exhibit_name = Exhibit_name))),
+								OLD.Exhibit_name,
+                                NEW.Exhibit_name);
+
+DROP TRIGGER IF EXISTS ARTIST_NOT_NEEDED;
+CREATE TRIGGER ARTIST_NOT_NEEDED
+BEFORE DELETE ON ART_OBJECT
+FOR EACH ROW
+	DELETE FROM	ARTIST
+    WHERE Artist_name IN 	(SELECT		Artist_name
+							FROM		ART_OBJECT
+                            WHERE		ART_OBJECT.Id_no = OLD.Id_no
+                            GROUP BY	Artist_name
+                            HAVING		COUNT(Artist_name) = 1);
