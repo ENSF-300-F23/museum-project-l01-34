@@ -44,41 +44,28 @@ SELECT	ART_OBJECT.Id_no, Title, Year_made, Material, Style, Art_desc
 FROM	SCULPTURE_OR_STATUE JOIN ART_OBJECT ON SCULPTURE_OR_STATUE.Id_no = ART_OBJECT.Id_no
 WHERE	Artist_name = 'Pablo Picasso' AND Material LIKE '%painted wood%';
 
--- Q6: UPDATES all art_object with Baroque Epoche to be included in 
--- 'The Rediscovery of The Baroque Period' Exhibition.
--- TRIGGER checks to ensure that art_object in Exhibitions that have dates that overlap
--- 'The Rediscovery of The Baroque Period' Exhibition date are not moved.
+-- Q6: UPDATES Permanent collection status
+-- trigger ensures new values are 'Stored', 'On display', or 'On loan'
 
-SELECT	Id_no, Title, Exhibit_name, Epoch -- original relevant table
-FROM 	ART_OBJECT;
+SELECT	ART_OBJECT.Id_no, Title, Pcoll_status -- original table
+FROM 	PERMANENT_COLLECTION JOIN ART_OBJECT ON ART_OBJECT.Id_no = PERMANENT_COLLECTION.Id_no;
 
-DROP TRIGGER IF EXISTS DISPLAYED_EXHIBIT_UPDATE_VIOLATION;
-CREATE TRIGGER DISPLAYED_EXHIBIT_UPDATE_VIOLATION
-BEFORE UPDATE ON ART_OBJECT
+DROP TRIGGER IF EXISTS PCOLL_STATUS_VIOLATION;
+CREATE TRIGGER PCOLL_STATUS_VIOLATION
+BEFORE UPDATE ON PERMANENT_COLLECTION
 FOR EACH ROW
-	SET NEW.Exhibit_name = IF(	(((SELECT DISTINCT End_date
-										FROM	EXHIBITION
-                                        WHERE	NEW.Exhibit_name = Exhibit_name) > 
-                                        (SELECT	DISTINCT Start_date 
-                                        FROM	EXHIBITION
-										WHERE	OLD.Exhibit_name = Exhibit_name))
-                                        AND
-                                        ((SELECT	DISTINCT Start_date
-                                        FROM	EXHIBITION
-                                        WHERE	NEW.Exhibit_name = Exhibit_name) <
-                                        (SELECT	DISTINCT End_date 
-                                        FROM	EXHIBITION
-										WHERE	OLD.Exhibit_name = Exhibit_name))),
-								OLD.Exhibit_name,
-                                NEW.Exhibit_name);
+	SET NEW.Pcoll_status = IF (NEW.Pcoll_status IN ('Stored', 'On display', 'On loan'),
+								NEW.Pcoll_status,
+                                OLD.Pcoll_status);
 
-UPDATE	ART_OBJECT
-SET		Exhibit_name = 'The Rediscovery of The Baroque Period'
-WHERE	Epoch = 'Baroque'; -- only objects in 'Cubism and the Trompe l\’Oeil Tradition' should not move 
-							-- due to overlapping dates
+UPDATE	PERMANENT_COLLECTION -- two art objects' Pcoll_status changed to "Stored"
+SET		Pcoll_status = 'Stored'
+WHERE	Id_no IN	(SELECT	Id_no
+					FROM	ART_OBJECT
+                    WHERE	Title = 'Cup with cover' OR Title = 'Portrait of a Man in Royal Livery');
 
-SELECT	Id_no, Title, Exhibit_name, Epoch -- shows successful update of art_objects' move to 'Baroque' exhibit
-FROM 	ART_OBJECT;
+SELECT	ART_OBJECT.Id_no, Title, Pcoll_status -- modified table
+FROM 	PERMANENT_COLLECTION JOIN ART_OBJECT ON ART_OBJECT.Id_no = PERMANENT_COLLECTION.Id_no;
 
 -- Q7: Ensures artist tuple is deleted from database if not needed anymore (aka: when all art objects by an artist are deleted!)
 SELECT	Artist_name, Artist_desc -- shows original relevant tables
