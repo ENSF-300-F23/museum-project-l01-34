@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="54PZoBZla_RP72kpvhu2" name="Page-1">
-        <mxGraphModel dx="1803" dy="1762" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="2553" dy="2038" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -497,19 +497,25 @@
                 <mxCell id="129" value="Artist" style="shape=ext;margin=3;double=0;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="35" y="70" width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="130" value="CREATES" style="shape=rhombus;double=0;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+                <mxCell id="130" value="CREATES" style="shape=rhombus;double=0;perimeter=rhombusPerimeter;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
                     <mxGeometry x="167.5" y="100" width="120" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="137" value="" style="endArrow=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="130" target="2">
+                <mxCell id="137" value="" style="endArrow=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="130" target="2" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="320" y="200" as="sourcePoint"/>
                         <mxPoint x="370" y="150" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="138" value="M" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="137">
+                <mxCell id="138" value="M" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="137" vertex="1" connectable="0">
                     <mxGeometry x="-0.5881" y="9" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="139" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 24px; background-color: initial;&quot;&gt;&lt;u&gt;&lt;b&gt;Description&lt;/b&gt;&lt;/u&gt;&lt;/span&gt;&lt;/div&gt;&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;font style=&quot;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/font&gt;&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="345" y="530" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="140" value="&lt;b id=&quot;docs-internal-guid-ad6a5190-7fff-dc5d-ae5d-e2a7c85c96ba&quot; style=&quot;font-weight:normal;&quot;&gt;&lt;p style=&quot;line-height:1.38;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;/p&gt;&lt;/b&gt;&lt;span style=&quot;&quot; id=&quot;docs-internal-guid-ad6a5190-7fff-dc5d-ae5d-e2a7c85c96ba&quot;&gt;&lt;p style=&quot;line-height:1.38;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&quot;&gt;Our group has designed the EER diagram for an art museum involving the information of the art objects. The Question narrative on the document mentioned that each art object falls into one of three categories: painting, sculpture/statue, or other, which are divided by disjoint subclasses for entity ART_OBJECT. Since every art object in any category has a specific style, we put it as an attribute directly connected to entity ART_OBJECT. We also assumed that each object has to be either permanent collection or borrowed which must belong to just one collection. Additionally we combined sculpture/statue into only one subclass entity SCULPTURE_OR_STATUE.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;line-height:1.38;margin-top:0pt;margin-bottom:0pt;&quot; dir=&quot;ltr&quot;&gt;&lt;span style=&quot;font-family: Arial, sans-serif; background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&quot;&gt;There’s a relationship between ART_OBJECT and EXHIBITION. This relationship has a N:1(assumed one exhibition for multiple art objects but not vice versa), and every exhibition has to have a certain number of art objects. Similarly there’s a relationship between entity artist and entity ART_OBJECT. We assumed that this relationship also has a N:1, which is that artists can create a number of objects while any art object is made by only one artist. We also made an assumption that every artist must make art but not every art object must have an artist,which means it can be unknown(null).&lt;/span&gt;&lt;/p&gt;&lt;div&gt;&lt;span style=&quot;font-family: Arial, sans-serif; color: rgb(0, 0, 0); background-color: transparent; font-variant-numeric: normal; font-variant-east-asian: normal; font-variant-alternates: normal; vertical-align: baseline;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=24;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="590" width="730" height="660" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
