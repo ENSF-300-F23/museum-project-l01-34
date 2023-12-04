@@ -49,7 +49,7 @@ WHERE	Artist_name = 'Pablo Picasso' AND Material LIKE '%painted wood%';
 -- TRIGGER checks to ensure that art_object in Exhibitions that have dates that overlap
 -- 'The Rediscovery of The Baroque Period' Exhibition date are not moved.
 
-SELECT	Id_no, Title, Exhibit_name -- original relevant table
+SELECT	Id_no, Title, Exhibit_name, Epoch -- original relevant table
 FROM 	ART_OBJECT;
 
 DROP TRIGGER IF EXISTS DISPLAYED_EXHIBIT_UPDATE_VIOLATION;
@@ -74,15 +74,16 @@ FOR EACH ROW
 
 UPDATE	ART_OBJECT
 SET		Exhibit_name = 'The Rediscovery of The Baroque Period'
-WHERE	Epoch = 'Baroque';
+WHERE	Epoch = 'Baroque'; -- only objects in 'Cubism and the Trompe l\’Oeil Tradition' should not move 
+							-- due to overlapping dates
 
-SELECT	Id_no, Title, Exhibit_name -- shows successful update of art_objects' move to 'Baroque' exhibit
+SELECT	Id_no, Title, Exhibit_name, Epoch -- shows successful update of art_objects' move to 'Baroque' exhibit
 FROM 	ART_OBJECT;
 
--- Q7: Delete artist tuple from database if not needed anymore
+-- Q7: Ensures artist tuple is deleted from database if not needed anymore (aka: when all art objects by an artist are deleted!)
 SELECT	Artist_name, Artist_desc -- shows original relevant tables
 FROM ARTIST
-ORDER BY Artist_name;
+ORDER BY Artist_name; -- Vincent Van Gogh is listed at the bottom for both queries
 SELECT	Id_no, Title, Artist_name
 FROM ART_OBJECT
 ORDER BY Artist_name;
