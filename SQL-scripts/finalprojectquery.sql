@@ -39,10 +39,10 @@ WHERE	Id_no IN 	(SELECT	Id_no
 					FROM	PERMANENT_COLLECTION
 					WHERE	Pcoll_status = 'On loan');
 
--- Q5: Retrieve all artworks by Picasso
-SELECT	ART_OBJECT.Id_no, Title, Year_made, Style, Art_desc
-FROM	ARTIST JOIN ART_OBJECT ON ARTIST.Artist_name = ART_OBJECT.Artist_name
-WHERE	ARTIST.Artist_name = 'Pablo Picasso';
+-- Q5: Retrieve all sculptures by Picasso that use painted wood
+SELECT	ART_OBJECT.Id_no, Title, Year_made, Material, Style, Art_desc
+FROM	SCULPTURE_OR_STATUE JOIN ART_OBJECT ON SCULPTURE_OR_STATUE.Id_no = ART_OBJECT.Id_no
+WHERE	Artist_name = 'Pablo Picasso' AND Material LIKE '%painted wood%';
 
 -- Q6: UPDATES all art_object with Baroque Epoche to be included in 
 -- 'The Rediscovery of The Baroque Period' Exhibition.
