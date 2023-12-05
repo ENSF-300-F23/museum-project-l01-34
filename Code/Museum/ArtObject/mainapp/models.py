@@ -1,6 +1,12 @@
-from typing import Any
+from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 from django.db import models
-    
+
+def validate_image_filename(value):
+    expected_filename = f"{value.instance.IdNo}.jpg"
+    if value.name != expected_filename:
+        raise ValidationError(f"Image filename must be {expected_filename}")
+   
 class Artist(models.Model):
     ArtistName = models.CharField(primary_key = True, max_length = 40)
     DateBorn = models.IntegerField(null = True, blank = True)
@@ -29,13 +35,14 @@ class ArtObject(models.Model):
     Style = models.CharField(max_length = 20, blank = True)
     Epoch = models.CharField(max_length = 20, blank = True)
     ArtDesc = models.CharField(max_length = 60, blank = True)
-    Image = models.ImageField(null = True, blank = True, upload_to = "images/")
+    Image = models.ImageField(null = True, blank = True, upload_to = "images/", validators = [FileExtensionValidator(allowed_extensions=['jpg']), validate_image_filename])
     
     ArtistName = models.ForeignKey("Artist", on_delete = models.SET_NULL, default = None, blank = True, null = True)
     
     def __str__(self):
         return self.IdNo 
-
+    
+    
 class DisplayedIn(models.Model):
     IdNo = models.ForeignKey("ArtObject", on_delete = models.CASCADE, default = None, blank = True, null = True)
     ExhibitName = models.ForeignKey("Exhibition", on_delete = models.CASCADE, default = None, blank = True, null = True)

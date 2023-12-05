@@ -4,7 +4,7 @@
   <div class = "flex-container">
     {% for x in Paintings %}
         <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
-        <img src="media/images/{% static x.IdNo|add:".jpg" %}" alt="">
+            <img src="media/images/{{ x.IdNo }}.jpg" alt="">
         <section> 
             <h2 class = "wrap">{{ x.Title }}</h2> 
         </section>
@@ -16,7 +16,7 @@
   <div class = "flex-container">
     {% for x in SculpsOrStats %}
         <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
-        <img src="media/images/{% static x.IdNo|add:".jpg" %}" alt="">
+            <img src="media/images/{{ x.IdNo }}.jpg" alt="">
         <section> 
             <h2 class = "wrap">{{ x.Title }}</h2> 
         </section>
@@ -28,7 +28,7 @@
   <div class = "flex-container">
     {% for x in Others %}
         <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
-        <img src="media/images/{% static x.IdNo|add:".jpg" %}" alt="">
+            <img src="media/images/{{ x.IdNo }}.jpg" alt="">
         <section> 
             <h2 class = "wrap">{{ x.Title }}</h2> 
         </section>
