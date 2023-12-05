@@ -1,0 +1,21 @@
+
+<h1> Permanent </h1>
+  <div class = "flex-container">
+    {% for x in Permanent %}
+        <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
+            <img src="media/images/{{ x.IdNo }}.jpg" alt="">
+        <section> 
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+            Cost: {{ x.Cost }}
+            
+        </section>
+        </a> 
+    {% endfor %}
+</div>
+
+<h1> Borrowed Collections </h1>
+  <div class = "masterContainer">
+    {% for x in Borrowed %}
+      <li> <a href = "/ArtCollections/BorrowedDetails/{{ x.CollName }}"> {{ x.CollName }} </a> </li>
+    {% endfor %}
+</div>

@@ -5,6 +5,8 @@ from django.utils.text import slugify
 import re
 
 def ValidateImageFile(value):
+    if value.name.startswith('images/'):
+        return
     expected_filename = f"{value.instance.IdNo}.jpg"
     if value.name != expected_filename:
         raise ValidationError(f"Image filename must be {expected_filename}")
@@ -78,7 +80,8 @@ class Collection(models.Model):
     Epoch = models.CharField(max_length = 20, blank = True)
     CollDesc = models.CharField(max_length = 100, blank = True)
     
-    
+    def __str__(self):
+        return self.CollName
     
 class PermanentCollection(models.Model):
     IdNo = models.ForeignKey("ArtObject", primary_key = True, on_delete = models.CASCADE)

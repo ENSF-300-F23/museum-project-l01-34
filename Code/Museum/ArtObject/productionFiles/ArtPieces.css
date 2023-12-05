@@ -52,3 +52,13 @@
   .flex-container ul{
     width: calc(100% - 100% / 10px);
   }
+
+  .DisplayContainer {
+    height: auto;
+    min-width: 100%;
+    padding: 10px 10px;
+  }
+
+  .DText{
+    color: white;
+  }
