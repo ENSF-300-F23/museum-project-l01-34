@@ -39,35 +39,6 @@ whitenoise==6.6.0
 5) Now run: py manage.py runserver. (*Note:* If py is not recognized, use 'python manage.py runserver', instead)\
    The site will now be at the url http://127.0.0.1:8000/ 
 
-ONLY IF THE DB IS DOWN / CANNOT CONNECT
-1) Go to Code\Museum\ArtObject\ArtObject\settings.py and change DATABASES to the following:
-   
-   DATABASES = {
-   
-       'default': {
-   
-           'ENGINE': 'django.db.backends.mysql',
-   
-           'NAME': 'artobject',
-   
-           'USER': 'root',
-   
-           'PASSWORD': 'YOUR PASSWORD',
-   
-           'HOST':'localhost',
-   
-           'PORT':'3306',
-   
-       }
-   }
-
-3) Create a  default connection in mysql workbench
-4) Create a db called artobject
-5) Follow the original steps until step 4.
-6) Before doing step 4 run the following command: py manage.py makemigrations. If this does not work, delete the migrations folder in mainapp and run: py manage.py makemigrations mainapp
-7) Run: py manage.py migrate. At this point the tables should be created in mysql
-8) Do the runserver command in original step 4
-
 ## Features
 Admin Page:
   Username: Admin
