@@ -48,7 +48,8 @@ def ArtPieceDetails(request, IdNo):
 
 def ExhibitDetails(request, ExhibitName):
   exhibit = Exhibition.objects.get(ExhibitName = ExhibitName)
-  artobjects = DisplayedIn.objects.filter(ExhibitName = ExhibitName)
+  artobjects = DisplayedIn.objects.filter(ExhibitName = ExhibitName).values_list("IdNo", flat = True)
+  artobjects = ArtObject.objects.filter(IdNo__in = artobjects)
   template = loader.get_template('ExhibitDetails.html')
   context = {
     'Exhibit' : exhibit,
