@@ -18,16 +18,16 @@
 **Python Application:** Website: Martin
 
 ## Requirements
--Museum in the Code portion of the repo is a virtual environment specifically created to be on python 3.11.6 and must have these libraries.
-python 3.11.6 <-- specifically this version 3.12 does not work 
-asgiref==3.7.2
-Django==4.2.7
-django-cleanup==8.0.0
-django-htmx==1.17.2
-mysqlclient==2.2.0
-Pillow==10.1.0
-sqlparse==0.4.4
-tzdata==2023.3
+-Museum in the Code portion of the repo is a virtual environment specifically created to be on python 3.11.6 and must have these libraries.\
+python 3.11.6 <-- specifically this version 3.12 does not work \
+asgiref==3.7.2\
+Django==4.2.7\
+django-cleanup==8.0.0\
+django-htmx==1.17.2\
+mysqlclient==2.2.0\
+Pillow==10.1.0\
+sqlparse==0.4.4\
+tzdata==2023.3\
 whitenoise==6.6.0
 
 ##  How Use and Run Website 
