@@ -20,7 +20,7 @@
 ## Requirements
 **Museum** in the **Code** portion of the repo is a virtual environment **specifically** created to be on **python 3.11.6**, therefore, it must be installed.
 
-The following libraries must also be installed (Use 'python -m pip install **library name**' in Command Prompt)
+The following libraries must also be installed (Use 'python -m pip install **library name**' in Command Prompt)\
 asgiref==3.7.2\
 Django==4.2.7\
 django-cleanup==8.0.0\
