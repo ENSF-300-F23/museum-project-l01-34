@@ -17,10 +17,62 @@
 
 **Python Application:** Website: Martin
 
-##  How Use and Run Website (?)
+##  How Use and Run Website 
+1) In the repo cd to Museum (cd Code\Museum)
+2) Run the following commmand: Scripts\activate.bat
+3) Then cd to ArtObject (cd ArtObject)
+4) Now run: py manage.py runserver. The site will now be at the url http://127.0.0.1:8000/
 
+ONLY IF THE DB IS DOWN / CANNOT CONNECT
+1) Go to Code\Museum\ArtObject\ArtObject\settings.py and change DATABASES to the following:
+   DATABASES = {
 
-## Features (?)
+    'default': {
+
+        'ENGINE': 'django.db.backends.mysql',
+
+        'NAME': 'artobject',
+
+        'USER': 'root',
+
+        'PASSWORD': 'YOUR PASSWORD',
+
+        'HOST':'localhost',
+
+        'PORT':'3306',
+
+    }
+}
+
+2) Create a  default connection in mysql workbench
+3) Create a db called artobject
+4) Follow the original steps until step 4.
+5) Before doing step 4 run the following command: py manage.py makemigrations. If this does not work, delete the migrations folder in mainapp and run: py manage.py makemigrations mainapp
+6) Run: py manage.py migrate. At this point the tables should be created in mysql
+7) Do the runserver command in original step 4
+
+## Features
+Admin Page:
+  Username: Admin
+  Password: admin
+
+  -Can view all tables and edit each one
+  -Can add/remove new users
+
+Home Page:
+  -Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
+  -In addition, the home search bar can also be used to query collections. For borrowed, type "$borrowed" for all borrowed collections items or specify with a space to search for a borred collection name (ex: "$borrowed Name"). This applies to permanent collections as well. Both are case insensitive but wording must be exact.
+
+Exhibits Page:
+  -Can be used to query all attributes of exhibits (Exhibition). Searching for ExhibitName does not have to be exact and is case insensitive. Start and End date must be exact and in the form YYYY-MM-DD.
+
+Art Page:
+  -Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
+  -Is a categorized version of the home page where user can see the different types of art
+
+Collections Page:
+  -Same search criteria for collections as the home page
+  -Categorized search for collections
 
 ## To Do list:
 - modify this file to include your group members information and tasks assigned per each
