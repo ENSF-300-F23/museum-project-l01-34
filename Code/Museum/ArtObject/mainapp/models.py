@@ -1,7 +1,6 @@
 from django.core.validators import FileExtensionValidator
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.text import slugify
 import re
 
 def ValidateImageFile(value):
@@ -43,7 +42,7 @@ class ArtObject(models.Model):
     Style = models.CharField(max_length = 20, blank = True)
     Epoch = models.CharField(max_length = 20, blank = True)
     ArtDesc = models.CharField(max_length = 60, blank = True)
-    Image = models.ImageField(null = True, blank = True, upload_to = "images/", validators = [FileExtensionValidator(allowed_extensions=['jpg']), ValidateImageFile])
+    Image = models.ImageField(null = True, blank = True, upload_to = "", validators = [FileExtensionValidator(allowed_extensions=['jpg']), ValidateImageFile])
     
     ArtistName = models.ForeignKey("Artist", on_delete = models.SET_NULL, default = None, blank = True, null = True)
     

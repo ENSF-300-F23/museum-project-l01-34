@@ -1,13 +1,15 @@
-
+{% load static %}
 <h1> Permanent </h1>
   <div class = "flex-container">
     {% for x in Permanent %}
         <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
-            <img src="media/images/{{ x.IdNo }}.jpg" alt="">
         <section> 
-            <h2 class = "wrap">{{ x.Title }}</h2> 
-            Cost: {{ x.Cost }}
-            
+          <ul class="DText">
+            <h2 class="wrap">{{ x.IdNo }}</h2> 
+            Cost: ${{ x.Cost }}<br>
+            Status: {{ x.PcollStatus }}<br>
+            Date Acquired: {{ x.DateAquired }}<br>
+          </ul>
         </section>
         </a> 
     {% endfor %}

@@ -166,7 +166,7 @@ def search_collections(request):
   
   objectIds = results.values_list('IdNo', flat = True)
   
-  perma = PermanentCollection.objects.filter(Q(IdNo__in = objectIds)).values_list("IdNo", flat = True)
+  perma = PermanentCollection.objects.filter(Q(IdNo__in = objectIds))
   print(perma.all)
   if Borrowed.objects.filter(Q(CollName = search_text)):
     borr = Borrowed.objects.filter(Q(CollName = search_text))
@@ -182,12 +182,15 @@ def search_collections(request):
   return HttpResponse(template.render(context, request))
 
 def BorrowedDetails(request, CollName):
-  borr = Borrowed.objects.filter(CollName = CollName).values_list('IdNo', flat = True)
-  artobjects = ArtObject.objects.filter(IdNo__in = borr)
+  borr = Borrowed.objects.filter(CollName = CollName)
+  artobjects = ArtObject.objects.filter(IdNo__in = borr.values_list('IdNo', flat = True))
+  combo = zip(artobjects, borr)
   template = loader.get_template('BorrowedDetails.html')
   context = {
     'BorrowedName' : CollName,
     'ArtObjects' : artobjects,
+    'Borroweds' : borr,
+    'Combined' : combo
   }
 
   return HttpResponse(template.render(context, request))
