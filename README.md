@@ -18,38 +18,40 @@
 **Python Application:** Website: Martin
 
 ##  How Use and Run Website 
-1) In the repo cd to Museum (cd Code\Museum)
-2) Run the following commmand: Scripts\activate.bat
-3) Then cd to ArtObject (cd ArtObject)
-4) Now run: py manage.py runserver. The site will now be at the url http://127.0.0.1:8000/
+1) Open cmd prompt (These specific commands are only for cmd prompt and not powershell)
+2) In the repo cd to Museum (cd Code\Museum)
+3) Run the following commmand: Scripts\activate.bat
+4) Then cd to ArtObject (cd ArtObject)
+5) Now run: py manage.py runserver. The site will now be at the url http://127.0.0.1:8000/
 
 ONLY IF THE DB IS DOWN / CANNOT CONNECT
 1) Go to Code\Museum\ArtObject\ArtObject\settings.py and change DATABASES to the following:
+   
    DATABASES = {
+   
+       'default': {
+   
+           'ENGINE': 'django.db.backends.mysql',
+   
+           'NAME': 'artobject',
+   
+           'USER': 'root',
+   
+           'PASSWORD': 'YOUR PASSWORD',
+   
+           'HOST':'localhost',
+   
+           'PORT':'3306',
+   
+       }
+   }
 
-    'default': {
-
-        'ENGINE': 'django.db.backends.mysql',
-
-        'NAME': 'artobject',
-
-        'USER': 'root',
-
-        'PASSWORD': 'YOUR PASSWORD',
-
-        'HOST':'localhost',
-
-        'PORT':'3306',
-
-    }
-}
-
-2) Create a  default connection in mysql workbench
-3) Create a db called artobject
-4) Follow the original steps until step 4.
-5) Before doing step 4 run the following command: py manage.py makemigrations. If this does not work, delete the migrations folder in mainapp and run: py manage.py makemigrations mainapp
-6) Run: py manage.py migrate. At this point the tables should be created in mysql
-7) Do the runserver command in original step 4
+3) Create a  default connection in mysql workbench
+4) Create a db called artobject
+5) Follow the original steps until step 4.
+6) Before doing step 4 run the following command: py manage.py makemigrations. If this does not work, delete the migrations folder in mainapp and run: py manage.py makemigrations mainapp
+7) Run: py manage.py migrate. At this point the tables should be created in mysql
+8) Do the runserver command in original step 4
 
 ## Features
 Admin Page:
