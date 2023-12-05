@@ -48,7 +48,7 @@ def ArtPieceDetails(request, IdNo):
 
 def ExhibitDetails(request, ExhibitName):
   exhibit = Exhibition.objects.get(ExhibitName = ExhibitName)
-  artobjects = ArtObject.objects.filter(ExhibitName = ExhibitName)
+  artobjects = DisplayedIn.objects.filter(ExhibitName = ExhibitName)
   template = loader.get_template('ExhibitDetails.html')
   context = {
     'Exhibit' : exhibit,
@@ -74,9 +74,10 @@ def search_art(request):
       Q(Style__iexact = search_text) |
       Q(Epoch__iexact = search_text) |
       Q(ArtDesc__icontains = search_text) |
-      Q(ExhibitName = search_text) |
       Q(ArtistName = search_text) 
-      )
+      ).distinct()
+    exhibitObjects = DisplayedIn.objects.filter(Q(ExhibitName = search_text)).values_list("IdNo", flat = True)
+    results = results.union(ArtObject.objects.filter(IdNo__in = exhibitObjects).distinct())
   else:
     results = ArtObject.objects.filter(Title__icontains = search_text)
     
@@ -114,7 +115,7 @@ def search_exhibit(request):
     Q(ExhibitName__icontains = search_text) |
     Q(StartDate = search_date) |
     Q(EndDate = search_date)
-    )
+    ).distinct()
   template = loader.get_template('partials/search-exhibitresults.html')
   context = {
     'Exhibits' : results

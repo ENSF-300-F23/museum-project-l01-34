@@ -13,8 +13,12 @@ class ExhibitionDisplay(admin.ModelAdmin):
 admin.site.register(Exhibition, ExhibitionDisplay)
 
 class ArtObjectDisplay(admin.ModelAdmin):
-    list_display = ("IdNo", "ArtistName", "Title", "ExhibitName","YearMade", "Origin", "Style", "Epoch", "ArtDesc")
+    list_display = ("IdNo", "ArtistName", "Title", "YearMade", "Origin", "Style", "Epoch", "ArtDesc")
 admin.site.register(ArtObject, ArtObjectDisplay)
+
+class DisplayedInDisplay(admin.ModelAdmin):
+    list_display = ("IdNo", "ExhibitName")
+admin.site.register(DisplayedIn, DisplayedInDisplay)
 
 class PaintingDisplay(admin.ModelAdmin):
     list_display = ("IdNo", "PaintType", "DrawnOn")

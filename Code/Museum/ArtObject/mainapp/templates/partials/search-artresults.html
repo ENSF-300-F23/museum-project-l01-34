@@ -1,8 +1,9 @@
 {% load static %}
 
+
 {% for x in ArtObjects %}
 <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" align-self = "center"> 
-    <img src="{% static x.Title|add:".jpg" %}" alt="">
+    <img src="media/images/{% static x.IdNo|add:".jpg" %}" alt="">
     <section> 
         <h2 class = "wrap">{{ x.Title }}</h2> 
     </section>
