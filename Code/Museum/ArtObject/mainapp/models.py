@@ -1,12 +1,14 @@
 from django.core.validators import FileExtensionValidator
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.text import slugify
+import re
 
-def validate_image_filename(value):
+def ValidateImageFile(value):
     expected_filename = f"{value.instance.IdNo}.jpg"
     if value.name != expected_filename:
         raise ValidationError(f"Image filename must be {expected_filename}")
-   
+        
 class Artist(models.Model):
     ArtistName = models.CharField(primary_key = True, max_length = 40)
     DateBorn = models.IntegerField(null = True, blank = True)
@@ -24,6 +26,10 @@ class Exhibition(models.Model):
     StartDate = models.DateField(null = True, blank = True)
     EndDate = models.DateField(null = True, blank = True)
     
+    def save(self, *args, **kwargs):
+        self.ExhibitName = re.sub(r'[^\w\s-]', '', self.ExhibitName).strip()
+        super(Exhibition, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.ExhibitName
     
@@ -35,7 +41,7 @@ class ArtObject(models.Model):
     Style = models.CharField(max_length = 20, blank = True)
     Epoch = models.CharField(max_length = 20, blank = True)
     ArtDesc = models.CharField(max_length = 60, blank = True)
-    Image = models.ImageField(null = True, blank = True, upload_to = "images/", validators = [FileExtensionValidator(allowed_extensions=['jpg']), validate_image_filename])
+    Image = models.ImageField(null = True, blank = True, upload_to = "images/", validators = [FileExtensionValidator(allowed_extensions=['jpg']), ValidateImageFile])
     
     ArtistName = models.ForeignKey("Artist", on_delete = models.SET_NULL, default = None, blank = True, null = True)
     
