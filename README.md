@@ -1,19 +1,26 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/oWm-EAsM)
 # Museum-Project
-Suyoung Jang	30179959	suyoung.jang@ucalgary.ca
+Suyoung Jang  30179959  suyoung.jang@ucalgary.ca
 
-Miri Kim		30172825	miri.kim@ucalgary.ca 
+Miri Kim      30172825  miri.kim@ucalgary.ca 
 
-Martin Liu		30161516	martin.liu@ucalgary.ca
+Martin Liu    30161516  martin.liu@ucalgary.ca
 
 ## Tasks
-EERD: 
+EERD: All worked together in-person. Updating and Explanation: Bella
 
-Relational Model and Database Implementation: 
+Relational Model: All worked together in-person. Updating: Bella
 
-Querys: 
+Database Implementation: Partially altogether in-person. Remotely: Miri
 
-Python Application: 
+Querys: Partially altogether in-person. Remotely: Miri
+
+Python Application: Website: Martin
+
+##  How Use and Run Website (?)
+
+
+## Features (?)
 
 ## To Do list:
 - modify this file to include your group members information and tasks assigned per each
