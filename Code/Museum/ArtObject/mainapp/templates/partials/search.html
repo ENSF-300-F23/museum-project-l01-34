@@ -1,0 +1,10 @@
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'Home.css' %}">
+<input type = "text"
+    hx-get = {{ getLocation }}
+    hx-target = "#results"
+    hx-trigger = "keyup changed delay:200ms"
+    name = "search"
+    class = "searchBar"
+    placeholder = "Search..." />
+</form>

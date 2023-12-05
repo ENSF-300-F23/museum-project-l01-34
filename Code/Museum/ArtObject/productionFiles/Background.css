@@ -1,0 +1,39 @@
+html{
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    background: #57606F;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  font: 600 18px verdana;
+  letter-spacing: 0.64px;
+  color: #000000;
+}
+
+h1{
+    padding-left: 10px;
+    text-align: absolute;
+    position: relative;
+}
+
+.masterFlexContainer{
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  height: auto;
+  align-items: center;
+  gap: 30px;
+}
+.masterContainer {
+  height: auto;
+  min-width: 100%;
+  background-color: transparent;
+  padding: 10px 10px;
+}
+
+
+

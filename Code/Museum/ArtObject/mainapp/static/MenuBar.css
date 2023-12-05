@@ -1,0 +1,33 @@
+.topnav {
+    background-color: transparent;
+    color:#ffffff;
+    align-self: right;
+    padding: 0px 10px;
+  }
+  .topnav a:link, .topnav a:visited {
+    text-decoration: none;
+    color: #ffffff; 
+    
+  }
+  .topnav a:hover, .topnav a:active {
+    text-decoration: underline;
+  }
+
+  form{
+    display: flex;
+    margin-left: auto;
+  }
+  
+  .SearchInput {
+    padding: 4px;
+    width: 100px;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    background-color: transparent;
+    border-color: transparent;
+    position: relative;
+  }
+  
+  .expanded{
+    width: 250px;
+  }

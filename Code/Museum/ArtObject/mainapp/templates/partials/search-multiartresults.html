@@ -1,0 +1,37 @@
+{% load static %}
+
+<h1> Paintings </h1>
+  <div class = "flex-container">
+    {% for x in Paintings %}
+        <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
+            <img src="{% static x.IdNo|add:".jpg" %}" alt="">
+        <section> 
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+        </section>
+        </a> 
+    {% endfor %}
+</div>
+
+<h1> Sculptures/Statues </h1>
+  <div class = "flex-container">
+    {% for x in SculpsOrStats %}
+        <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
+            <img src="{% static x.IdNo|add:".jpg" %}" alt="">
+        <section> 
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+        </section>
+        </a> 
+    {% endfor %}
+</div>
+
+<h1> Other </h1>
+  <div class = "flex-container">
+    {% for x in Others %}
+        <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" > 
+            <img src="{% static x.IdNo|add:".jpg" %}" alt="">
+        <section> 
+            <h2 class = "wrap">{{ x.Title }}</h2> 
+        </section>
+        </a> 
+    {% endfor %}
+</div>

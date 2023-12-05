@@ -1,0 +1,24 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+  {{ BorrowedName }}
+{% endblock %}
+
+{% block navBar%}
+  {% include 'MenuBar.html' %}
+{% endblock %}
+
+{% block contents %}
+  <div class = "flex-container" id = "results">
+    {% for x, y in Combined %}
+    <a href="/ArtPieces/ArtPieceDetails/{{ x.IdNo }}" align-self = "center"> 
+        <img src="{% static x.IdNo|add:".jpg" %}" alt="">
+        <section> 
+            <h2 class="wrap">{{ x.Title }}</h2> 
+            Date Borrowed: {{ y.DateBorrowed }}<br> 
+            Date Returned: {{ y.DateReturned }}<br>
+        </section>
+    </a> 
+{% endfor %} 
+  </div>
+{% endblock %}

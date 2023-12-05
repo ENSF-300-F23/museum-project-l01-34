@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+
+{% block title %}
+  Art Catalog
+{% endblock %}
+
+{% block navBar%}
+  {% include 'MenuBar.html' %}
+{% endblock %}
+
+{% block sb %}
+  <form class = "searchContainer">
+    {% with getLocation="search-art" %}
+    {% csrf_token %}
+    {% include 'partials/search.html' %}
+    {% endwith %}
+  </form>
+{% endblock %}
+
+{% block contents %}
+<div id = "results">
+  {% include 'partials/search-multiartresults.html' %}
+</div>
+{% endblock %}
+
+
