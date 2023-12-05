@@ -20,7 +20,7 @@
 ## Requirements
 **Museum** in the **Code** portion of the repo is a virtual environment **specifically** created to be on **python 3.11.6**, therefore, it must be installed.
 
-The following libraries must also be installed (Use 'python -m pip install **library name**' in Command Prompt)\
+The following libraries must also be installed (Use '**python** -m pip install **"library name here"**' in Command Prompt):\
 asgiref==3.7.2\
 Django==4.2.7\
 django-cleanup==8.0.0\
@@ -32,11 +32,12 @@ tzdata==2023.3\
 whitenoise==6.6.0
 
 ##  How Use and Run Website 
-1) Open cmd prompt (These specific commands are only for cmd prompt and not powershell)
+1) After cloning the repo, open cmd prompt (These specific commands are only for cmd prompt and not powershell)
 2) In the repo cd to Museum (cd Code\Museum)
 3) Run the following commmand: Scripts\activate.bat
 4) Then cd to ArtObject (cd ArtObject)
-5) Now run: py manage.py runserver. The site will now be at the url http://127.0.0.1:8000/ (*Note:* If py is not recognized, use 'python manage.py runserver', instead)
+5) Now run: py manage.py runserver. (*Note:* If py is not recognized, use 'python manage.py runserver', instead)\
+   The site will now be at the url http://127.0.0.1:8000/ 
 
 ONLY IF THE DB IS DOWN / CANNOT CONNECT
 1) Go to Code\Museum\ArtObject\ArtObject\settings.py and change DATABASES to the following:
