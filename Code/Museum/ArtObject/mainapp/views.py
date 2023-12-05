@@ -167,7 +167,6 @@ def search_collections(request):
   objectIds = results.values_list('IdNo', flat = True)
   
   perma = PermanentCollection.objects.filter(Q(IdNo__in = objectIds))
-  print(perma.all)
   if Borrowed.objects.filter(Q(CollName = search_text)):
     borr = Borrowed.objects.filter(Q(CollName = search_text))
   else:
