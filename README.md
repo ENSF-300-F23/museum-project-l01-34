@@ -32,7 +32,7 @@ tzdata==2023.3\
 whitenoise==6.6.0
 
 ##  How Use and Run Website 
-1) In a directory of your choice, open command prompt and initialize a virtual environment (py -m venv {Name})
+1) In a directory of your choice, open command prompt and initialize a virtual environment (py -3.11 -m venv {Name})
 2) Activate the virtual environment with (Scripts\activate.bat)
 3) In another directory, clone the repo and open cmd prompt (These specific commands are only for cmd prompt and not powershell)
 4) Change directories to the repo
