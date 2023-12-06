@@ -42,27 +42,31 @@ whitenoise==6.6.0
    The site will now be at the url http://127.0.0.1:8000/ 
 
 ## Features
-Admin Page:
-  Username: Admin
+**Admin Page:**\
+  Username: Admin\
   Password: admin
 
-  -Can view all tables and edit each one
-  -Can add/remove new users
+  - Can view all tables and edit each one
+  - Can add/remove new users
 
-Home Page:
-  -Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
-  -In addition, the home search bar can also be used to query collections. For borrowed, type "$borrowed" for all borrowed collections items or specify with a space to search for a borred collection name (ex: "$borrowed Name"). This applies to permanent collections as well. Both are case insensitive but wording must be exact.
+**Home Page:**
+  - Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
+  - In addition, the home search bar can also be used to query collections. For borrowed, type "$borrowed" for all borrowed collections items or specify with a space to search for a borred collection name (ex: "$borrowed Name"). This applies to permanent collections as well. Both are case insensitive but wording must be exact.
 
-Exhibits Page:
-  -Can be used to query all attributes of exhibits (Exhibition). Searching for ExhibitName does not have to be exact and is case insensitive. Start and End date must be exact and in the form YYYY-MM-DD.
+**Exhibits Page:**
+  - Can be used to query all attributes of exhibits (Exhibition). Searching for ExhibitName does not have to be exact and is case insensitive. Start and End date must be exact and in the form YYYY-MM-DD.
 
-Art Page:
-  -Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
-  -Is a categorized version of the home page where user can see the different types of art
+**Art Page:**
+  - Can be used to query all attributes of art pieces (ArtObject). All primary keys, foreign keys, and YearMade must be matched exactly to appear in search results. Searching for the title/art description of an art piece can be non-exact and case does not matter. The rest of the attributes must be exact in wording but is case insensitive
+  - Is a categorized version of the home page where user can see the different types of art
 
-Collections Page:
-  -Same search criteria for collections as the home page
-  -Categorized search for collections
+**Collections Page:**
+  - Same search criteria for collections as the home page
+  - Categorized search for collections
+
+## Bonus Marks
+- point 1 of Query code: this is meant to be done through using the information_schema. if you provide the output this will account for a 3% project bonus.
+- points 6 and 7 of query code: expected to use the referential trigger actions would be sufficient to meet the requirement, if you implement a full custom trigger for one of the tables this will account for 3% each (total 6% if you do 6 and 7) project bonus
 
 ## To Do list:
 - modify this file to include your group members information and tasks assigned per each
