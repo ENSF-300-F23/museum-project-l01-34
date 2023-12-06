@@ -32,11 +32,13 @@ tzdata==2023.3\
 whitenoise==6.6.0
 
 ##  How Use and Run Website 
-1) After cloning the repo, open cmd prompt (These specific commands are only for cmd prompt and not powershell)
-2) In the repo cd to Museum (cd Code\Museum)
-3) Run the following commmand: Scripts\activate.bat
-4) Then cd to ArtObject (cd ArtObject)
-5) Now run: py manage.py runserver. (*Note:* If py is not recognized, use 'python manage.py runserver', instead)\
+1) In a directory of your choice, open command prompt and initialize a virtual environment (py -m venv {Name})
+2) Activate the virtual environment with (Scripts\activate.bat)
+3) In another directory, clone the repo and open cmd prompt (These specific commands are only for cmd prompt and not powershell)
+4) Change directories to the repo
+5) In the repo cd to Code\ArtObject
+6) Run the following command to install all dependencies: py -m pip install -r requirements.txt  
+7) Now run: py manage.py runserver. (*Note:* If py is not recognized, use 'python manage.py runserver', instead)\
    The site will now be at the url http://127.0.0.1:8000/ 
 
 ## Features
