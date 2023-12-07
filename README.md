@@ -33,7 +33,7 @@ whitenoise==6.6.0
 
 ##  How to Use and Run Website 
 (*Note:* If **py** is not recognized in a prompt, try using **python** instead)
-1) In a directory of your choice, open command prompt and initialize a virtual environment (py -3.11 -m venv {Name})
+1) In a directory of your choice, open command prompt and initialize a virtual environment (py -3.11 -m venv {Name}), try (py -m venv {Name}) if this doesn't work
 2) Activate the virtual environment with (Scripts\activate.bat)
 3) In another directory, clone the repo (These specific commands are only for cmd prompt and not powershell)
 4) In the command prompt with the activated virtual environment, change directories to the repo
