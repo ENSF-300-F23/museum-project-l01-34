@@ -117,7 +117,7 @@ def search_art(request):
       p = PermanentCollection.objects.filter(CollName = search_text.split('$permanent')[1].strip())
     else:
       p = PermanentCollection.objects.all()
-    results = ArtObjects.objects.filter(IdNo__in = p)
+    results = ArtObject.objects.filter(IdNo__in = p)
     
   context = {
     'ArtObjects' : results,
@@ -171,7 +171,7 @@ def search_collections(request):
   if Borrowed.objects.filter(Q(CollName = search_text)):
     borr = Borrowed.objects.filter(Q(CollName = search_text))
   else:
-    borr = Borrowed.objects.all()
+    borr = Collection.objects.all()
       
   template = loader.get_template('partials/search-collectionsresults.html')
   context = {
