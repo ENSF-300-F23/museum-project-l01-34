@@ -20,7 +20,7 @@
 ## Requirements
 **Museum** in the **Code** portion of the repo is a virtual environment **specifically** created to be on **python 3.11.6**, therefore, it must be installed.
 
-The following libraries must also be installed either on your pc or in a virtual environment detailed in the **How to Use and Run Website** section (Use '**python** -m pip install **"library name here"**' in Command Prompt):\
+The following libraries must also be installed either on your pc or in a virtual environment detailed in the **How to Use and Run Website** section:\
 asgiref==3.7.2\
 Django==4.2.7\
 django-cleanup==8.0.0\
@@ -32,13 +32,14 @@ tzdata==2023.3\
 whitenoise==6.6.0
 
 ##  How to Use and Run Website 
+(*Note:* If **py** is not recognized in a prompt, try using '**python** instead)
 1) In a directory of your choice, open command prompt and initialize a virtual environment (py -3.11 -m venv {Name})
 2) Activate the virtual environment with (Scripts\activate.bat)
 3) In another directory, clone the repo (These specific commands are only for cmd prompt and not powershell)
 4) In the command prompt with the activated virtual environment, change directories to the repo
 5) In the repo cd to Code\ArtObject
 6) Run the following command to install all dependencies: py -m pip install -r requirements.txt  
-7) Now run: py manage.py runserver. (*Note:* If py is not recognized, use 'python manage.py runserver', instead)\
+7) Now run: py manage.py runserver.\
    The site will now be at the url http://127.0.0.1:8000/ 
 
 ## Features
